@@ -11,10 +11,12 @@ export = (dependencies :DependenciesData):any =>{
 
             const userData =req.body
 
-            // console.log(userData);
+            console.log(userData);
             
 
             const isExistingUser = await getUserByEmail_useCase(dependencies).execute(userData.email)
+            console.log("aaa",isExistingUser);
+            
 
             if(!isExistingUser){
                  return res.status(400).json({
@@ -38,7 +40,7 @@ export = (dependencies :DependenciesData):any =>{
             const userId =  isExistingUser._id
             const token = await authServies.generateToken({id:userId,role:"user"})
             
-            res.status(200).json({
+                res.status(200).json({
                 success:true,
                 message:"Login successfull",
                 data:isExistingUser,

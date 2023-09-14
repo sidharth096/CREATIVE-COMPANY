@@ -8,6 +8,7 @@ export interface DependenciesData {
 export interface repositoryData {
  userRepository: any;
  workerRepository:any;
+ adminRepository:any;
  
 
 }
@@ -18,5 +19,6 @@ export interface useCaseData {
     getUserByEmail_useCase: any
     createNewWorkerProfile_useCase: any
     getWorkerByEmail_useCase :any
+    getAdminByEmail_useCase:any
     
 }

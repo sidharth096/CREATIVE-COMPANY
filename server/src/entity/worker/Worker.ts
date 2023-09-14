@@ -3,8 +3,8 @@ export interface WorkerData {
     email: string;
     password: string;
     phone: number; 
-    // is_Admin: boolean;
-    // userId: string;
+    job_title:string;
+
   }
   
   export class WorkerProfile {
@@ -12,14 +12,15 @@ export interface WorkerData {
     email: string;
     password: string;
     phone: number;
-    // is_Admin: boolean;
-    // userId: string;
+    job_title:string;
+
   
-    constructor({ email, name, phone,  password }: WorkerData) {
+    constructor({ email, name, phone,  password,job_title }: WorkerData) {
       this.name = name;
       this.email = email;
       this.password = password;
       this.phone = phone;
-    //   this.is_Admin = is_Admin;
+      this.job_title=job_title;
+
     }
   } 

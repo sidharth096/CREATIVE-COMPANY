@@ -21,7 +21,7 @@ const createProfile =async (req: Request, res: Response) => {
         const isExistingWorker = await getWorkerByEmail_useCase(dependencies).execute(wokerData.email)
 
         if(isExistingWorker){
-            res.status(200).json({
+         return res.status(200).json({
                 success:false,
                 message:"Worker already exist"
             })

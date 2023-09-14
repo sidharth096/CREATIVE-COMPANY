@@ -14,17 +14,19 @@ const createProfile =async (req: Request, res: Response) => {
     try {
         const userData = req.body
 
-        console.log(userData);
+        // console.log(userData);
         
         userData.email = userData.email.toLowerCase();
         
         const isExistingUser = await getUserByEmail_useCase(dependencies).execute(userData.email)
+        
 
         if(isExistingUser){
-            res.status(200).json({
+               return res.status(400).json({
                 success:false,
-                message:"User already exist"
+                message:"User already exist",
             })
+           
         }
 
         userData.password = await authServies.passwordHashing(userData.password)
@@ -36,7 +38,7 @@ const createProfile =async (req: Request, res: Response) => {
             
         }
 
-        res.status(200).json({
+            res.status(200).json({
             success: true,
             message: "user is register successfully",
             data: newUserData

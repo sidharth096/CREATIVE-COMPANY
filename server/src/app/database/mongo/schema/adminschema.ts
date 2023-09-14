@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-
-const workerschema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -16,14 +15,9 @@ const workerschema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:true
-    },
-    job_title:{
-        type:String,
-        required:true
+        requireda:true
     }
 })
 
-const Worker = mongoose.model("Worker",workerschema)
-
-export default Worker
+const Admin = mongoose.model("Admin",adminSchema)
+export default Admin

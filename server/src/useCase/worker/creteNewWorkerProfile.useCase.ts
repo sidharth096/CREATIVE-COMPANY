@@ -13,6 +13,7 @@ export const createNewWorkerProfile_useCase = (dependencies: DependenciesData) =
         email,
         password,
         phone,
+        job_title
     
     }:WorkerData) => {
         const workerProfile = new WorkerProfile({
@@ -20,6 +21,7 @@ export const createNewWorkerProfile_useCase = (dependencies: DependenciesData) =
             email,
             password,
             phone,
+            job_title
         })
         return workerRepository.createWorker(workerProfile)
     }

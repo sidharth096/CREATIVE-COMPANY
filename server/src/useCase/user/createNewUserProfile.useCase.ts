@@ -15,6 +15,7 @@ export const createNewUserProfile_useCase = (dependencies: DependenciesData) => 
         email,
         password,
         phone,
+        
     
     }:UserData) => {
         const userProfile = new UserProfile({
