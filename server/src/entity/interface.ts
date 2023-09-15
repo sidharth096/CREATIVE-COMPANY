@@ -9,6 +9,7 @@ export interface repositoryData {
  userRepository: any;
  workerRepository:any;
  adminRepository:any;
+ designCategoryRepository:any;
  
 
 }
@@ -20,5 +21,6 @@ export interface useCaseData {
     createNewWorkerProfile_useCase: any
     getWorkerByEmail_useCase :any
     getAdminByEmail_useCase:any
+    designCategoryImageUpload_useCase:any
     
 }

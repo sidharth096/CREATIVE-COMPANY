@@ -38,7 +38,7 @@ const createProfile =async (req: Request, res: Response) => {
 
         res.status(200).json({
             success: true,
-            message: "Worker is register successfully",
+            message: "Worker registered successfully",
             data: newUserData
         })
 

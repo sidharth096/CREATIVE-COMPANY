@@ -10,6 +10,7 @@ export = (dependency:DependenciesData):any=>{
           
         try {
             const adminData= req.body
+            console.log("2");
             
             console.log(adminData);
             

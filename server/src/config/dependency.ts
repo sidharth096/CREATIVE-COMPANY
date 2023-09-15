@@ -1,7 +1,13 @@
-import { userRepository,workerRepository,adminRepository } from "../app/repository/mongo";
+import { userRepository,workerRepository,adminRepository,designCategoryRepository } from "../app/repository/mongo";
 
 
-import { createNewUserProfile_useCase,getUserByEmail_useCase,createNewWorkerProfile_useCase,getWorkerByEmail_useCase,getAdminByEmail_useCase} from "../useCase";
+import { createNewUserProfile_useCase,
+    getUserByEmail_useCase,
+    createNewWorkerProfile_useCase,
+    getWorkerByEmail_useCase,
+    getAdminByEmail_useCase,
+    designCategoryImageUpload_useCase
+} from "../useCase";
  
 
 
@@ -10,7 +16,8 @@ const useCase = {
     getUserByEmail_useCase,
     createNewWorkerProfile_useCase,
     getWorkerByEmail_useCase,
-    getAdminByEmail_useCase
+    getAdminByEmail_useCase,
+    designCategoryImageUpload_useCase
 }
 
 
@@ -19,7 +26,8 @@ const useCase = {
 const repository = {
     userRepository,
     workerRepository,
-    adminRepository
+    adminRepository,
+    designCategoryRepository
 
     
 }  
