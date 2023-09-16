@@ -10,9 +10,8 @@ export = (dependency:DependenciesData):any=>{
           
         try {
             const adminData= req.body
-            console.log("2");
-            
-            console.log(adminData);
+           
+            // console.log(adminData);
             
 
             const isAdmin = await getAdminByEmail_useCase(dependency).execute(adminData.email)

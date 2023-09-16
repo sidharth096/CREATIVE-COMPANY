@@ -22,5 +22,6 @@ export interface useCaseData {
     getWorkerByEmail_useCase :any
     getAdminByEmail_useCase:any
     designCategoryImageUpload_useCase:any
+    getAllDesignCategory_useCase:any
     
 }

@@ -6,7 +6,8 @@ import { createNewUserProfile_useCase,
     createNewWorkerProfile_useCase,
     getWorkerByEmail_useCase,
     getAdminByEmail_useCase,
-    designCategoryImageUpload_useCase
+    designCategoryImageUpload_useCase,
+    getAllDesignCategory_useCase
 } from "../useCase";
  
 
@@ -17,7 +18,8 @@ const useCase = {
     createNewWorkerProfile_useCase,
     getWorkerByEmail_useCase,
     getAdminByEmail_useCase,
-    designCategoryImageUpload_useCase
+    designCategoryImageUpload_useCase,
+    getAllDesignCategory_useCase
 }
 
 
