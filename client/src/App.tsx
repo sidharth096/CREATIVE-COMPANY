@@ -1,15 +1,21 @@
 
-import './App.css';
+
+// import Login from './pages/user/Login';
+import MainRouter from "./router/MainRouter";
+
+
 
 
 
 
 function App() {
   return (
-    <div className="App">
- 
-
+   <>
+    <div className="">
+      <MainRouter/>
+    
     </div>
+   </>
   );
 }
 

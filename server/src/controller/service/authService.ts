@@ -26,6 +26,13 @@ export const authServies = {
       } catch (error) {
         
       }
+    },
+    verifyToken: async (token:string)=>{
+      try {
+        return jwt.verify(token,configkey.JWT_KEY)
+      } catch (error) {
+        
+      }
     }
 
 }
