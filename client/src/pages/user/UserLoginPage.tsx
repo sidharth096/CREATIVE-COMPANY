@@ -3,10 +3,10 @@ import Login from '../../components/user/Login'
 
 
 
-const LoginPage = () => {
+const UserLoginPage = () => {
   return (
     <Login/>
   )
 }
 
-export default LoginPage
+export default UserLoginPage

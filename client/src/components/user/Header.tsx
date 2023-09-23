@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {useNavigate} from "react-router-dom"
 
 const navigation = [
  
@@ -14,7 +15,16 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+
+
 export default function Header() {
+
+  const navigate = useNavigate()
+  
+  const handleSignInClick = () => {
+    navigate('/user/userLogin');
+  };
+
   return (
     <Disclosure as="nav" className="bg-white flex justify- shadow-md px- ">
       {({ open }) => (
@@ -70,7 +80,7 @@ export default function Header() {
               {/* sign in */}
 
               <div className='flex gap-3 text-white '>
-                 <button className=' rounded-full bg-black text-xs text-white px-3 py-1 text-s '>Sign in</button>
+                 <button className=' rounded-full bg-black text-xs text-white px-3 py-1 text-s ' onClick={handleSignInClick}>Sign in</button>
                  
               </div>
 

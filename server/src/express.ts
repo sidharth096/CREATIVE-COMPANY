@@ -8,7 +8,7 @@ const expressConfig = (app:Application)=>{
    app.use(express.json());
    app.use(urlencoded({ extended:true }))
 
-   
+    
 }
 
 export default expressConfig

@@ -1,35 +1,102 @@
 import React from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+
+import { userLogin } from '../../features/axios/api/user';
+
+import { loginInterface } from '../../types/userInterface'
+import * as Yup from 'yup'
+import {
+  Formik,
+  FormikHelpers,
+  FormikProps,
+  Form,
+  Field,
+  FieldProps,
+} from 'formik';
+
+
+
+
+
+const loginSchema  = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
+});
+
+
+const initialValuesLogin = {
+  email: "",
+  password: "",
+};
+
+
+
+
 
 
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
+
+  
+const notify = (msg: string, type: string) =>
+type === "error"
+  ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
+  : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+
+  const handleSubmit = (userData:loginInterface)=>{
+    userLogin(userData).then((response)=>{
+    notify(response.data.message, "success");
+    navigate("/")
+
+  }).catch((error)=>{
+    notify(error.message, "error");
+  })
+  
+    
+}
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-    <div className="bg-gradient-to-t from-gray-400 to-gray-200  p-8 rounded shadow-md w-full sm:w-96">
+
+     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+     <div className="bg-gradient-to-t from-gray-400 to-gray-200  p-8 rounded shadow-md w-full sm:w-96">
       <h2 className="text-2xl font-semibold text-black  mb-6">Login</h2>
-      <form>
+      <Formik
+      initialValues={initialValuesLogin}
+      validationSchema={loginSchema}
+      onSubmit={handleSubmit}   >
+     {({ errors, touched }) => (
+      <Form>
         <div className="mb-4">
           {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label> */}
-          <input
+          <Field
             type="email"
             id="email"
             name="email"
             placeholder='Email or Password'
             className="mt-1 p-2.5 w-full  rounded-md "
-            required
           />
-        </div>
-        <div className="mb-4">
-          
-          <input
+           {errors.email && touched.email ? (
+          <div className="text-red-600">{errors.email}</div>
+            ) : null}
+          </div>
+        <div className="mb-4">  
+          <Field
             type="password"
             id="password"
             name="password"
             placeholder='Password'
             className="mt-1 p-2.5 w-full  rounded-md "
-            required
           />
-        </div>
+          {errors.password && touched.password ? (
+          <div className="text-red-600">{errors.password}</div>
+           ) : null}
+          </div>
 
         {/* remember_me */}
 
@@ -55,9 +122,19 @@ const Login = () => {
             Forgot password?
           </a>
         </div>
-      </form>
+        
+        <div className='flex justify-center mt-3'>
+          <a onClick={()=>navigate("/user/userRegister")} className="text-sm text-black hover:text-gray-600">
+            Create a new account 
+          </a>
+        </div>
+        </Form>
+        )}
+       </Formik>
     </div>
+    <ToastContainer />
   </div>
+
 
   )
 }
