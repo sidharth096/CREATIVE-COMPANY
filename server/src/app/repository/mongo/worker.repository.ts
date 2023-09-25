@@ -11,5 +11,9 @@ export ={
     getWorkerByEmail : async(email:string)=>{
         const isWorkerExist = await Worker.findOne({email})
         return isWorkerExist
+    },
+    getWorkerByPhone : async(phone:string)=>{
+        const isWorkerExist = await Worker.findOne({phone})
+        return isWorkerExist
     }
 }

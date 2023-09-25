@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { useNavigate } from 'react-router-dom';
 
-import { userRegister } from '../../features/axios/api/user';
-import { signupInterface } from '../../types/userInterface'
+import { workerRegister } from '../../features/axios/api/worker';
+import { workerSignupInterface } from '../../types/workerInterface'; 
 import * as Yup from 'yup'
 import {
   Formik,
@@ -16,6 +16,7 @@ import {
   Field,
   FieldProps,
 } from 'formik';
+import { workerData } from 'worker_threads';
 
 
 
@@ -25,6 +26,7 @@ const loginSchema  = Yup.object().shape({
   phone: Yup.string()
   .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
   .required('Phone number is required'),
+  job_title:Yup.string().required('Job title is required'),
   password: Yup.string()
   .min(6, 'Password must be at least 6 characters')
   .required('Password is required'),
@@ -39,42 +41,47 @@ const initialValuesSignup = {
   name:"",
   email: "",
   phone:"",
+  job_title:"",
   password: "",
   confirmpassword:""
 
 };
 
+  
+    
 
-const Signup = () => {
+const WorkerSignup = () => {
 
-  const navigate = useNavigate()
+   const navigate = useNavigate()
 
   const notify = (msg: string, type: string) =>
     type === "error"
       ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
       : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
 
-const handleSubmit = (userData:signupInterface)=>{
-  userRegister(userData).then((response)=>{
+const handleSubmit = (workerData:workerSignupInterface)=>{
+
+  console.log("........>",workerData);
+  
+  workerRegister(workerData).then((response)=>{
 
     notify(response.data.message, "success");
-    navigate('/')
+    navigate('/worker')
 
   }).catch((error)=>{
     notify(error.message, "error");
   })
-  
-    
 }
   return (
-    <Formik
+    <>
+        <Formik
       initialValues={initialValuesSignup}
       validationSchema={loginSchema}
       onSubmit={handleSubmit}   >
      {({ errors, touched }) => (
      <div className="min-h-screen flex items-center justify-center bg-gray-100">
      <div className="bg-gradient-to-t from-gray-400 to-gray-200  p-8 rounded shadow-md w-full sm:w-96">
-      <h2 className="text-2xl font-semibold text-black  mb-6">Login</h2>
+      <h2 className="text-2xl font-semibold text-black  mb-6">Worker Signup</h2>
      
       <Form>
         <div className="mb-4">
@@ -116,6 +123,19 @@ const handleSubmit = (userData:signupInterface)=>{
          <div className="text-red-600">{errors.phone}</div>
           ) : null}
        </div>
+       <div className="mb-4">
+         
+         <Field
+           type="text"
+           id="job_title"
+           name="job_title"
+           placeholder='Job title'
+           className="mt-1 p-2.5 w-full  rounded-md "
+         />
+          {errors.job_title && touched.job_title ? (
+         <div className="text-red-600">{errors.job_title}</div>
+          ) : null}
+       </div>
         <div className="mb-4">
           
           <Field
@@ -153,7 +173,7 @@ const handleSubmit = (userData:signupInterface)=>{
           </button>
         </div>
         <div className='flex justify-center mt-3'>
-          <a onClick={()=>navigate("/user/userLogin")} className="text-sm text-black hover:text-gray-600">
+          <a onClick={()=>navigate("/worker/workerLogin")} className="text-sm text-black hover:text-gray-600">
             Already have an account 
           </a>
         </div>
@@ -166,8 +186,8 @@ const handleSubmit = (userData:signupInterface)=>{
   </div>
   )}
   </Formik>
-
+    </>
   )
 }
 
-export default Signup
+export default WorkerSignup

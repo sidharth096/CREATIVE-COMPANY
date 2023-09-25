@@ -7,21 +7,23 @@ import {authServies} from "../service/authService"
 export = (dependencies : DependenciesData): any => {
 
     const {
- useCase : {createNewWorkerProfile_useCase }
+ useCase : {createNewWorkerProfile_useCase,getWorkerByPhone_useCase }
     }= dependencies
 
 const createProfile =async (req: Request, res: Response) => {
     try {
         const wokerData = req.body
 
-        // console.log(wokerData);
+        console.log(wokerData);
         
         wokerData.email = wokerData.email.toLowerCase();
         
         const isExistingWorker = await getWorkerByEmail_useCase(dependencies).execute(wokerData.email)
+        const isExistingWorkerByphone = await getWorkerByPhone_useCase(dependencies).execute(wokerData.phone)
 
-        if(isExistingWorker){
-         return res.status(200).json({
+
+        if(isExistingWorker || isExistingWorkerByphone){
+         return res.status(400).json({
                 success:false,
                 message:"Worker already exist"
             })

@@ -23,5 +23,6 @@ export interface useCaseData {
     getAdminByEmail_useCase:any
     designCategoryImageUpload_useCase:any
     getAllDesignCategory_useCase:any
+    getWorkerByPhone_useCase:any
     
 }

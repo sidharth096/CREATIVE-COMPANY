@@ -17,7 +17,7 @@ export const userLogin = async (userData: loginInterface): Promise<any> => {
       });
   
       console.log( response.data.message);
-      return response;
+      return response.data;
     } catch (error:any) {
         
       throw new Error(error.response.data.message);

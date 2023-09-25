@@ -20,7 +20,7 @@ export const authServies = {
     generateToken: async(payload:{id:string,role:string})=>{
       try {
         const token=jwt.sign(payload,configkey.JWT_KEY,{
-          expiresIn:"2d"
+          expiresIn:"60"
         })
         return token  
       } catch (error) {

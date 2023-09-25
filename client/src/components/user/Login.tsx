@@ -2,6 +2,9 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducer/reducer';
 
 import { userLogin } from '../../features/axios/api/user';
 
@@ -15,6 +18,10 @@ import {
   Field,
   FieldProps,
 } from 'formik';
+import { stat } from 'fs';
+import { login } from '../../redux/slice/userSlice/userAuthSlice';
+import { setToken } from '../../redux/slice/userSlice/userTokenSlice';
+
 
 
 
@@ -42,7 +49,21 @@ const initialValuesLogin = {
 const Login = () => {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  
+  const isLoggedIn = useSelector((state:RootState)=>state.userAuth.loggedIn)
+  
+  const token = localStorage.getItem("token");
 
+  useEffect(()=>{
+    console.log(isLoggedIn);
+    if(token){
+      dispatch(login())
+    }
+     if(isLoggedIn === true){
+      navigate("/")
+    }
+  })
 
   
 const notify = (msg: string, type: string) =>
@@ -51,7 +72,14 @@ type === "error"
   : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
 
   const handleSubmit = (userData:loginInterface)=>{
+    console.log(userData);
+    
     userLogin(userData).then((response)=>{
+     
+      const token = response.token
+      dispatch(login())
+      dispatch(setToken(token))
+      
     notify(response.data.message, "success");
     navigate("/")
 

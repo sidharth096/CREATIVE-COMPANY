@@ -1,6 +1,6 @@
 import { createNewUserProfile_useCase } from "./user";
 import { getUserByEmail_useCase } from "./user";
-import { createNewWorkerProfile_useCase,getWorkerByEmail_useCase } from "./worker";
+import { createNewWorkerProfile_useCase,getWorkerByEmail_useCase,getWorkerByPhone_useCase } from "./worker";
 // import { getWorkerByEmail_useCase } from "./worker";
 import { getAdminByEmail_useCase,designCategoryImageUpload_useCase } from "./admin";
 import { getAllDesignCategory_useCase } from "./design";
@@ -14,6 +14,7 @@ export {
     getWorkerByEmail_useCase,
     getAdminByEmail_useCase,
     designCategoryImageUpload_useCase,
-    getAllDesignCategory_useCase
+    getAllDesignCategory_useCase,
+    getWorkerByPhone_useCase
     
 }

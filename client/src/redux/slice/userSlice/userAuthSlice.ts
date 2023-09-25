@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface CounterState {
-  loggedIn: boolean;
-}
 
-const initialState: CounterState = {
-  loggedIn: false,
+
+const initialState= {
+  loggedIn: false
 };
 
 const userAuthSlice = createSlice({
@@ -13,7 +11,7 @@ const userAuthSlice = createSlice({
   initialState,
   reducers: {
     login: (state) => {
-      state.loggedIn = true;
+      state.loggedIn= true;
     },
     logout: (state) => {
       state.loggedIn = false;
