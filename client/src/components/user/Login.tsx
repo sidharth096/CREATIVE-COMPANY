@@ -86,7 +86,7 @@ type === "error"
   }).catch((error)=>{
     notify(error.message, "error");
   })
-  
+   
     
 }
   return (

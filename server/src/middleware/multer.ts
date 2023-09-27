@@ -2,8 +2,8 @@
 import { v2 as cloudinary } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import configkey from "../config";
-import multer from "multer";
-import {  Request, RequestHandler } from "express";
+import multer, { MulterError } from "multer";
+import {  Request, ErrorRequestHandler,NextFunction,Response } from "express";
 
 // Define Cloudinary configuration
 
@@ -32,6 +32,19 @@ const storageOptions: CloudinaryStorageOptions = {
 
 // Create a new CloudinaryStorage instance
 const storage = new CloudinaryStorage(storageOptions);
+
+//middleware to handle errors during file upload
+export const handleUploadErrors: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof MulterError) {
+    // Handle Multer errors (e.g., file size exceeded, file type not allowed)
+    res.status(400).json({ error: "Multer error: " + err.message });
+  } else if (err && err.message) {
+    // Handle other errors (e.g., Cloudinary API errors)
+    res.status(500).json({ error:  err.message });
+  } else {
+    next(); // If no errors occurred, pass control to the next middleware
+  }
+};
 
 // Create a Multer middleware for handling file uploads with Cloudinary storage
 const upload =  multer({ storage: storage })

@@ -6,6 +6,7 @@ import http from "http"
 import connectDb from "./config/db"
 import dependencies from "./config/dependency"
 import { routes } from "./router"
+import { handleUploadErrors } from "./middleware/multer"
 
 
 
@@ -21,6 +22,7 @@ connectDb()
 //express configurations
 expressConfig(app)
 
+// app.use(handleUploadErrors);
 app.use("/api", routes(dependencies))
 
 //starting the server

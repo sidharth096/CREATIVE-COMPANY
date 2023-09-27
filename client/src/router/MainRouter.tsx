@@ -4,7 +4,7 @@ import UserRouter from './UserRouter'
 import WorkerRouter from './WorkerRouter'
 import AdminRouter from './AdminRouter'
 import WorkerHomePage from '../pages/worker/WorkerHomePage'
-import AdminHomePage from '../pages/admin/AdminHomePage'
+import AdminLoginPage from '../pages/admin/AdminLoginPage'
 import {Routes,Route} from 'react-router-dom'
 
 const MainRouter = () => {
@@ -15,7 +15,7 @@ const MainRouter = () => {
 
         <Route path='/worker' element={<WorkerHomePage/>} />
 
-        <Route path='/admin' element={<AdminHomePage/>} />
+        <Route path='/admin' element={<AdminLoginPage />} />
 
         <Route path='/user/*' element={<UserRouter/>} /> 
 
@@ -23,7 +23,7 @@ const MainRouter = () => {
 
         <Route path='/admin/*' element={<AdminRouter/>} />
    
-    </Routes>
+    </Routes> 
      
     </div>
 

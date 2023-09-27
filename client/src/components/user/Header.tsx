@@ -2,13 +2,14 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {useNavigate} from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const navigation = [
  
-  { name: 'Home', href: '#', current: true },
-  { name: 'Designs', href: '#', current: false },
-  { name: 'Workers', href: '#', current: false },
-  { name: 'About', href: '#', current: false },
+  { name: 'Home', Link: '/', current: true },
+  { name: 'Designs', Link: '/user/design', current: false },
+  { name: 'Workers', Link: '/user/worker', current: false },
+  { name: 'About', Link: '/about', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -60,10 +61,11 @@ export default function Header() {
                 
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
+
                     {navigation.map((item) => (
+                      <Link to ={item.Link}>
                       <a
                         key={item.name}
-                        href={item.href}
                         className={classNames(
                           item.current ? ' text-black underline underline-offset-1' : 'text-black hover: hover:text-gray-400',
                           'rounded-md px-3 py-2 text-sm font-medium'
@@ -72,6 +74,7 @@ export default function Header() {
                       >
                         {item.name}
                       </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -152,18 +155,20 @@ export default function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2 ">
               {navigation.map((item) => (
+                <Link to ={item.Link}>
                 <Disclosure.Button
-                  key={item.name}
+                  key={item.name} 
                   as="a"
-                  href={item.href}
                   className={classNames(
                     item.current ? ' text-white  bg-black ' : 'text-black  hover:text-gray-400',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
-                >
+                   >
                   {item.name}
+                  
                 </Disclosure.Button>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

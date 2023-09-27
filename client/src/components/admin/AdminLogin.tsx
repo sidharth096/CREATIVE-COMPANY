@@ -70,7 +70,7 @@ const AdminLogin = () => {
         dispatch(adminLoginReducer())
         dispatch(setAdminToken(token))
       notify(response.data.message, "success");
-      navigate("/admin")
+      navigate("/admin/home")
   
     }).catch((error)=>{
       notify(error.message, "error");
