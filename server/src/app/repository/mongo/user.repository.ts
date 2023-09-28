@@ -14,5 +14,14 @@ export ={
         
         const isExist = await User.findOne({email:email})
         return isExist
+    },
+    getUserById: async(userId:string)=>{
+        const user = await User.findById(userId)
+    },
+    getAllUsers: async()=>{
+        const users = await User.find()
+        return users
     }
+
+
 }

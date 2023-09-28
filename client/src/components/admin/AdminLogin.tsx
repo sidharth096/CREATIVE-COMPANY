@@ -54,7 +54,7 @@ const AdminLogin = () => {
       dispatch(adminLoginReducer())
     }
     if(adminIsLoggin==true){
-      navigate('/admin')
+      navigate('/admin/home')
     }
   })
 

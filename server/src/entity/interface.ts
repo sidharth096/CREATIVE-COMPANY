@@ -24,5 +24,7 @@ export interface useCaseData {
     designCategoryImageUpload_useCase:any
     getAllDesignCategory_useCase:any
     getWorkerByPhone_useCase:any
+    getAllUsers_useCase:any
+    getAllWorkers_useCase:any
     
 }

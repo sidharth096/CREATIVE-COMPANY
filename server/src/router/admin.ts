@@ -9,10 +9,13 @@ import { handleUploadErrors } from "../middleware/multer"
  export = (dependency:DependenciesData) =>{
     const router = express.Router()
 
-    const {adminLoginController,adminDesignCategoryController} = adminController(dependency)
+    const {adminLoginController,adminDesignCategoryController,adminGetAllUsersController,adminGetAllWorkersController} = adminController(dependency)
 
     router.post("/adminLogin", adminLoginController)
     router.post("/addDesignCategory",authMiddleware,upload.single("image"),handleUploadErrors,adminDesignCategoryController)
+
+    router.get("/getAllUsers",authMiddleware,adminGetAllUsersController)
+    router.get("/getAllWorkers",adminGetAllWorkersController)
 
     return router
 }

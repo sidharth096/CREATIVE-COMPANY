@@ -39,7 +39,7 @@ const Footer = () => {
       
       <div className='mt-7'>
        <div className="flex justify-center text-xs">
-          <p>&copy; {new Date().getFullYear()} Your Company Name. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Creative Company❤️. All Rights Reserved.</p>
         </div>
        </div>
       </div>

@@ -15,5 +15,9 @@ export ={
     getWorkerByPhone : async(phone:string)=>{
         const isWorkerExist = await Worker.findOne({phone})
         return isWorkerExist
-    }
+    },
+    getAllWorkers : async()=>{
+        const workers = await Worker.find()
+        return workers
+    },
 }
