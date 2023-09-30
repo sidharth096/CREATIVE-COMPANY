@@ -34,7 +34,7 @@ export = (dependency:DependenciesData):any=>{
 
             
            const adminId =  isAdmin._id
-           const token = await authServies.generateToken({id:adminId,role:"user"})
+           const token = await authServies.generateAdminToken({id:adminId,role:"user"})
            
                res.status(200).json({
                success:true,

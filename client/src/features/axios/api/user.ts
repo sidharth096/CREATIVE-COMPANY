@@ -27,7 +27,6 @@ export const userLogin = async (userData: loginInterface): Promise<any> => {
 
 export const userRegister =async (userData:signupInterface)=>{
   try {
-    
     const response = await axios({
       method: 'post',
       url: 'http://localhost:5000/api/user/userRegister',
@@ -38,5 +37,7 @@ export const userRegister =async (userData:signupInterface)=>{
   } catch (error:any) {
     throw new Error(error.response.data.message);
   }
-}
+};
+
+
   

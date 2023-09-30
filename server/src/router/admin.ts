@@ -3,6 +3,7 @@ import { DependenciesData } from "../entity/interface"
 import { adminController } from "../controller"
 import { upload } from "../middleware/multer"
 import authMiddleware from "../middleware/authentication.middleware"
+import authAdminMiddleware from "../middleware/authenticationAdmin.middleware"
 import { handleUploadErrors } from "../middleware/multer"
 
 
@@ -14,8 +15,8 @@ import { handleUploadErrors } from "../middleware/multer"
     router.post("/adminLogin", adminLoginController)
     router.post("/addDesignCategory",authMiddleware,upload.single("image"),handleUploadErrors,adminDesignCategoryController)
 
-    router.get("/getAllUsers",authMiddleware,adminGetAllUsersController)
-    router.get("/getAllWorkers",adminGetAllWorkersController)
+    router.get("/getAllUsers",authAdminMiddleware,adminGetAllUsersController)
+    router.get("/getAllWorkers",authAdminMiddleware,adminGetAllWorkersController)
 
     return router
 }

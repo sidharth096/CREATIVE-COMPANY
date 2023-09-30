@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Interface } from "readline";
 
 
 const loadTokenFromLocalStorage = ()=>{
