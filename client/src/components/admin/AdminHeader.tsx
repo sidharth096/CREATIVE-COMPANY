@@ -2,6 +2,9 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {Link, useNavigate} from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { adminLogoutReducer } from '../../redux/slice/adminSlice/adminAuthSlice'
+import { clearAdminToken } from '../../redux/slice/adminSlice/adminTokenSlice'
 
 const navigation = [
  
@@ -17,8 +20,12 @@ function classNames(...classes: string[]) {
 
 const AdminHeader = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   
   const handleLogout = () => {
+    dispatch(adminLogoutReducer())
+    dispatch(clearAdminToken())
+    navigate('/admin')
   };
   
   return (

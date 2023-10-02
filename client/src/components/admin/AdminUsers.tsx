@@ -48,20 +48,23 @@ useEffect(()=>{
     {
       Header: 'Action',
       accessor: '_id',
-      Cell: ({ row }: { row: { original: { _id: string } } }) => (
+      Cell: ({ row }: { row: { original: { _id: string,block:boolean } } }) => (
         <button
-          className='bg-black rounded-md text-white text-sm px-2'
+        className={`rounded-md text-white text-sm px-2 ${row.original.block ? 'bg-red-500' : 'bg-green-500'}`}
           onClick={() => handleAction(row.original._id)}
-        >
-          Block
+         >
+          {row.original.block? "Unblock":"Block"}
+
         </button>
       ),
     },
-    
+
   ];
 
   const handleAction = (id:string) => {
     blockUnBlock(id).then((response)=>{
+      console.log(response?.data.data);
+      dispatch(setUsers(response?.data.data))  
 
     }).catch((error)=>{
       
@@ -70,7 +73,7 @@ useEffect(()=>{
 
   return (
     <>
-    <div className='text-center mt-8'> 
+    <div className='text-center p-10  h-screen '> 
       <h1 className='text-2xl font-bold mb-4'>Users</h1>
       <div className='mx-auto max-w-screen-md bg-white p-4 rounded-lg shadow-2xl mt-2 '>  
         <UsersTable data={users||[]} columns={columns} />

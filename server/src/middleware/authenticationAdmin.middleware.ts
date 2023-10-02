@@ -3,7 +3,6 @@ import { authServies } from "../controller/service/authService";
 import { CustomRequest } from "../util/expressRoutes";
 
 const authAdminMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  console.log("sidharthcc");
   
   try {
     const customReq = req as CustomRequest;
@@ -16,7 +15,6 @@ const authAdminMiddleware = async (req: Request, res: Response, next: NextFuncti
       token = customReq.headers.authorization.split(" ")[1];
     }
 
-    console.log("token", token);
 
     if (!token) {
       return res.status(401).json({
@@ -32,8 +30,7 @@ const authAdminMiddleware = async (req: Request, res: Response, next: NextFuncti
       // customReq.payload = { id, role };
       next();
     } catch (err: any) {
-      console.log("ssss");
-
+      
       if (err.name === "TokenExpiredError") {
 
         return res.status(401).json({ error: "Token has expired" });

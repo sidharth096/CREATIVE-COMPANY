@@ -12,7 +12,7 @@ const initialState = {
   users: null as User[] | null, // Initialize `users` as an array of User or null.
 };
 
-const userDataSlice = createSlice({
+const usersDataSlice = createSlice({
   name: 'usersData', // Corrected name
   initialState,
   reducers: {
@@ -25,7 +25,7 @@ const userDataSlice = createSlice({
   },
 });
 
-export const { setUsers, clearUsers } = userDataSlice.actions;
+export const { setUsers, clearUsers } = usersDataSlice.actions;
 
-export default userDataSlice.reducer;
+export default usersDataSlice.reducer;
  

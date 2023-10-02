@@ -15,9 +15,14 @@ const userSchema =new mongoose.Schema({
     },
     password:{
         type:String,
-        requireda:true
+        required:true
+    },
+    block:{
+        type:Boolean,
+        default:false
+
     }
 });
 
 const User= mongoose.model("User",userSchema);
-export default User
+export default User;

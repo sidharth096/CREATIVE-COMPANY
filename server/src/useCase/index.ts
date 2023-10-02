@@ -2,7 +2,13 @@ import { createNewUserProfile_useCase } from "./user";
 import { getUserByEmail_useCase } from "./user";
 import { createNewWorkerProfile_useCase,getWorkerByEmail_useCase,getWorkerByPhone_useCase } from "./worker";
 // import { getWorkerByEmail_useCase } from "./worker";
-import { getAdminByEmail_useCase,designCategoryImageUpload_useCase,getAllUsers_useCase,getAllWorkers_useCase } from "./admin";
+import { getAdminByEmail_useCase,
+    designCategoryImageUpload_useCase,
+    getAllUsers_useCase,
+    getAllWorkers_useCase,
+    blockUnBlockUser_useCase,
+    blockUnBlockWorker_useCase } from "./admin";
+    
 import { getAllDesignCategory_useCase } from "./design";
 
 
@@ -17,7 +23,9 @@ export {
     getAllDesignCategory_useCase,
     getWorkerByPhone_useCase,
     getAllUsers_useCase,
-    getAllWorkers_useCase
+    getAllWorkers_useCase,
+    blockUnBlockUser_useCase,
+    blockUnBlockWorker_useCase
 
     
 }

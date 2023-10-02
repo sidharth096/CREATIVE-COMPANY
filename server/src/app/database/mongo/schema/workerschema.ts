@@ -21,6 +21,11 @@ const workerschema = new mongoose.Schema({
     job_title:{
         type:String,
         required:true
+    },
+    block:{
+        type:Boolean,
+        default:false
+
     }
 })
 

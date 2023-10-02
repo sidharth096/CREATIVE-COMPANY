@@ -20,7 +20,7 @@ export const authServies = {
     generateToken: async(payload:{id:string,role:string})=>{
       try {
         const token=jwt.sign(payload,configkey.JWT_KEY,{
-          expiresIn:"2m"
+          expiresIn:"30m"
         })
         return token  
       } catch (error) {
@@ -31,7 +31,7 @@ export const authServies = {
     generateAdminToken: async(payload:{id:string,role:string})=>{
       try {
         const token=jwt.sign(payload,configkey.JWT_KEY_ADMIN,{
-          expiresIn:"2m"
+          expiresIn:"30m"
         })
         return token  
       } catch (error) {

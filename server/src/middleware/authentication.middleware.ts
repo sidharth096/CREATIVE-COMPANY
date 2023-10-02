@@ -16,7 +16,6 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
       token = customReq.headers.authorization.split(" ")[1];
     }
 
-    console.log("token", token);
 
     if (!token) {
       return res.status(401).json({
@@ -32,7 +31,6 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
       // customReq.payload = { id, role };
       next();
     } catch (err: any) {
-      console.log("ssss");
 
       if (err.name === "TokenExpiredError") {
 

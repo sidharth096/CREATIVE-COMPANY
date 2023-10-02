@@ -20,4 +20,26 @@ export ={
         const workers = await Worker.find()
         return workers
     },
+    blockUnBlockWorker: async(userId:string)=>{
+        try {
+ 
+         const worker = await Worker.findById(userId)
+         
+          if(worker){
+             if(worker.block==true){
+                worker.block=false
+             } 
+             else{
+                worker.block=true
+             }
+             await worker?.save()
+             const workers = await Worker.find()
+             return workers
+          }else{
+             throw Error("does not exist the user")
+          }
+        } catch (error:any) {
+           throw Error(error)
+        }
+     }
 }

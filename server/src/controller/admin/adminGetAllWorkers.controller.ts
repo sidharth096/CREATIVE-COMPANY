@@ -8,8 +8,6 @@ export = (dependency:DependenciesData)=>{
     const adminGetAllWorkers = async(req:Request,res:Response)=>{
 
         const workers = await getAllWorkers_useCase(dependency).execute()
-
-        console.log("ddd",workers);
         
 
         if(!workers){

@@ -26,5 +26,7 @@ export interface useCaseData {
     getWorkerByPhone_useCase:any
     getAllUsers_useCase:any
     getAllWorkers_useCase:any
+    blockUnBlockUser_useCase:any
+    blockUnBlockWorker_useCase:any
     
 }

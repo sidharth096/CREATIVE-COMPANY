@@ -3,6 +3,7 @@ export interface UserData {
     email: string;
     password: string;
     phone: number; 
+  
     // is_Admin: boolean;
     // userId: string;
   }
@@ -12,6 +13,7 @@ export interface UserData {
     email: string;
     password: string;
     phone: number;
+  
     // is_Admin: boolean;
     // userId: string;
   
@@ -20,6 +22,8 @@ export interface UserData {
       this.email = email;
       this.password = password;
       this.phone = phone;
+      
+
     //   this.is_Admin = is_Admin;
     }
   }

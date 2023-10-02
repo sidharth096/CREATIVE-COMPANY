@@ -10,7 +10,9 @@ import { createNewUserProfile_useCase,
     getAllDesignCategory_useCase,
     getWorkerByPhone_useCase,
     getAllUsers_useCase,
-    getAllWorkers_useCase
+    getAllWorkers_useCase,
+    blockUnBlockUser_useCase,
+    blockUnBlockWorker_useCase
 
 } from "../useCase";
  
@@ -26,7 +28,9 @@ const useCase = {
     getAllDesignCategory_useCase,
     getWorkerByPhone_useCase,
     getAllUsers_useCase,
-    getAllWorkers_useCase
+    getAllWorkers_useCase,
+    blockUnBlockUser_useCase,
+    blockUnBlockWorker_useCase
 }
 
 
