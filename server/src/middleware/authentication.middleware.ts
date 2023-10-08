@@ -3,7 +3,6 @@ import { authServies } from "../controller/service/authService";
 import { CustomRequest } from "../util/expressRoutes";
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  console.log("sidharthcc");
   
   try {
     const customReq = req as CustomRequest;

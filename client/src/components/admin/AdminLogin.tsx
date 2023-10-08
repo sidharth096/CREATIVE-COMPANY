@@ -53,28 +53,28 @@ const AdminLogin = () => {
     if(adminToken){
       dispatch(adminLoginReducer())
     }
-    if(adminIsLoggin==true){
+    if(adminIsLoggin===true){
       navigate('/admin/home')
     }
   })
 
-  
-  const notify = (msg: string, type: string) =>
-  type === "error"
-    ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
-    : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
-  
-    const handleSubmit = (userData:loginInterface)=>{
-      adminLogin(userData).then((response)=>{
-        const token = response.token
-        dispatch(adminLoginReducer())
-        dispatch(setAdminToken(token))
-      notify(response.data.message, "success");
-      navigate("/admin/home")
-  
-    }).catch((error)=>{
-      notify(error.message, "error");
-    })
+    
+    const notify = (msg: string, type: string) =>
+    type === "error"
+      ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
+      : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+    
+      const handleSubmit = (userData:loginInterface)=>{
+        adminLogin(userData).then((response)=>{
+          const token = response.token
+          dispatch(adminLoginReducer())
+          dispatch(setAdminToken(token))
+        notify(response.data.message, "success");
+        navigate("/admin/home")
+    
+      }).catch((error)=>{
+        notify(error.message, "error");
+      })
     
       
   }
@@ -114,15 +114,6 @@ const AdminLogin = () => {
             <div className="text-red-600">{errors.password}</div>
              ) : null}
             </div>
-  
-          {/* remember_me */}
-  
-          {/* <div className="mb-4">
-            <label className="flex items-center">
-              <input type="checkbox" className="text-black rounded border-gray-300 dark:border-gray-600" name="remember_me" />
-              <span className="ml-2 text-sm text-black">Remember me</span>
-            </label>
-          </div> */}
   
   
           <div className="flex  mt-7">

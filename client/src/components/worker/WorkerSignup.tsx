@@ -10,8 +10,8 @@ import { workerSignupInterface } from '../../types/workerInterface';
 import * as Yup from 'yup'
 import {
   Formik,
-  FormikHelpers,
-  FormikProps,
+  // FormikHelpers,
+  // FormikProps,
   Form,
   Field,
   FieldProps,

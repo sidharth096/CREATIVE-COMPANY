@@ -9,3 +9,7 @@ export interface signupInterface{
   password: string;
   confirmpassword:string;
 }
+export interface DesignCategoryInterface{
+  categoryname:string;
+  img:File|null
+}

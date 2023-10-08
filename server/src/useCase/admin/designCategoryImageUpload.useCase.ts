@@ -7,7 +7,7 @@ export const designCategoryImageUpload_useCase = (dependency:DependenciesData)=>
     
    const {repository:{designCategoryRepository}}=dependency
 
-   const execute = ({categoryName,imageUrl,designCategoryCount} :DesignCategoryData)=>{
+   const execute = async({categoryName,imageUrl,designCategoryCount} :DesignCategoryData)=>{
     
 
     const designCategory = new DesignCategoryProfile({
@@ -15,7 +15,11 @@ export const designCategoryImageUpload_useCase = (dependency:DependenciesData)=>
         imageUrl,
         designCategoryCount
     })
-    return designCategoryRepository.createDesignCategory(designCategory)
+    const newDesign = await designCategoryRepository.createDesignCategory(designCategory)
+    
+    if(newDesign){
+        return designCategoryRepository.getAllDesignCategory()
+    }
        
    }
 

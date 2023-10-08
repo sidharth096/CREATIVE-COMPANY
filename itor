@@ -1,0 +1,77 @@
+[33mcommit 146e66641c9a08dc69db8fbbdfbf1c53f2c21c14[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Mon Oct 2 17:09:12 2023 +0530
+
+     block unblock user and worker by admin
+
+[33mcommit 46c00eea68fe01e0f9e86d506c8ef8dd6800a646[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Sat Sep 30 19:27:49 2023 +0530
+
+    uers listing
+
+[33mcommit 9633b9757591c2c33b2627da354b7aeb614e7a0a[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Thu Sep 28 17:54:00 2023 +0530
+
+    get user and worker api
+
+[33mcommit deb11a3e21f84704397c4b2ebdb7204dd5c3ef60[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Wed Sep 27 20:37:20 2023 +0530
+
+    design update, design category listing
+
+[33mcommit d9543ed64a2540e88fa4a955e0d7e5b1e760221d[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Mon Sep 25 18:47:52 2023 +0530
+
+    token added to local storage
+
+[33mcommit 7d88da8bf87b95c159b9dd8c409616d1b1c79e71[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Sat Sep 23 16:24:23 2023 +0530
+
+    userlogin signup client side
+
+[33mcommit 57e942d5bab89878f9e673051d919a54060811c2[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Wed Sep 20 23:16:32 2023 +0530
+
+    route setup and header login-page designing
+
+[33mcommit ffc6d02e061a0e5aef3393ab3a59a6ed9e7f3324[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Sat Sep 16 13:50:17 2023 +0530
+
+    Design category getting api
+
+[33mcommit 403f222c034503057d886e4352347a69f819f971[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Fri Sep 15 18:15:35 2023 +0530
+
+    Design category adding api
+
+[33mcommit 54b024ad0a78cb69d241a2c994532febe25dc7ce[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Thu Sep 14 14:04:14 2023 +0530
+
+    admin authetication api and client side redux store setup
+
+[33mcommit de326cd8498a0f457ef76e161e70d1c2cafa6506[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Wed Sep 13 11:26:29 2023 +0530
+
+    user worker authetication api
+
+[33mcommit e0e9e4ed394e4374b0ef6dfa21308fc88491b9e2[m
+Author: Sidharth TP <121001524+sidharth096@users.noreply.github.com>
+Date:   Wed Sep 13 10:51:39 2023 +0530
+
+    Delete server/.env
+
+[33mcommit ea647dc71c7a7a495ffb42fe951e3e9a64260388[m
+Author: sidharth <sidharthtp096@gmail.com>
+Date:   Thu Sep 7 00:33:05 2023 -0800
+
+    server client configurations

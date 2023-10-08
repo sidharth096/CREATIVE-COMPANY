@@ -2,37 +2,37 @@ import React, { useEffect,useState } from 'react'
 import { getDesignCategories } from '../../features/axios/api/design';
 import { error } from 'console';
 import { array } from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducer/reducer';
+import { setDesignCategories } from '../../redux/slice/designSlice/designCategoriesDataslice';
 
-interface initialValues{
-  map(arg0: (item: any) => import("react/jsx-runtime").JSX.Element): React.ReactNode;
-  categoryName:string
-  imageUrl:string
-  _id:string
-}
 
 const DesignCategory = () => {
  
-  const [state, setstate] = useState<initialValues>();
+  const dispatch = useDispatch()
+  const designCategories = useSelector((state:RootState)=>state.designcategories.designCatagories)
 
   useEffect(()=>{
      getDesignCategories().then((response)=>{
-       console.log(response.data);
-       setstate(response.data)
+       console.log(response);
        
+       dispatch(setDesignCategories(response.data))
 
      }).catch((error:any)=>{
+      console.log(error);
+      
       console.log("Design category getting error",error);
       
      })
-  }) 
+  },[]) 
   
   return (
    <>
-<div className='mt-16'>
-  <div className='overflow-x-scroll overflow-y-hidden' style={{ width: '100vw' }}>
+<div className='mt-10 p-4'>
+  <div className='overflow-x-scroll overflow-y-hidden p-2' style={{ width: '100vw' }}>
     <div className='flex p-4' style={{ width: '200%' }}>
-      {state &&
-        state.map((item) => (
+      {designCategories &&
+        designCategories.map((item) => (
           <div className='ml-4 shadow-lg w-36 md:w-32 sm:w-28  xxl:w-24 ' key={item._id}>
             <div className='h-32 xl:h-24'>
               <img

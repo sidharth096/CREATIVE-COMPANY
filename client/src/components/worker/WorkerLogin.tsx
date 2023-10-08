@@ -56,7 +56,7 @@ const WorkerLogin = () => {
     if(workerToken){
       dispatch(workerLoginReducer())
     }
-    if(workerIsLoggedIn==true){
+    if(workerIsLoggedIn===true){
       navigate("/worker")
     }
   })
