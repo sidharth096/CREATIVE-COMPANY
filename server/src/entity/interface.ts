@@ -10,6 +10,7 @@ export interface repositoryData {
  workerRepository:any;
  adminRepository:any;
  designCategoryRepository:any;
+ designRepository:any
  
 
 }
@@ -28,5 +29,6 @@ export interface useCaseData {
     getAllWorkers_useCase:any
     blockUnBlockUser_useCase:any
     blockUnBlockWorker_useCase:any
+    designUpload_useCase:any
     
 }

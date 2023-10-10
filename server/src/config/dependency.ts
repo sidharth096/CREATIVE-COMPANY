@@ -1,4 +1,4 @@
-import { userRepository,workerRepository,adminRepository,designCategoryRepository } from "../app/repository/mongo";
+import { userRepository,workerRepository,adminRepository,designCategoryRepository ,designRepository} from "../app/repository/mongo";
 
 
 import { createNewUserProfile_useCase,
@@ -12,7 +12,8 @@ import { createNewUserProfile_useCase,
     getAllUsers_useCase,
     getAllWorkers_useCase,
     blockUnBlockUser_useCase,
-    blockUnBlockWorker_useCase
+    blockUnBlockWorker_useCase,
+    designUpload_useCase
 
 } from "../useCase";
  
@@ -30,7 +31,8 @@ const useCase = {
     getAllUsers_useCase,
     getAllWorkers_useCase,
     blockUnBlockUser_useCase,
-    blockUnBlockWorker_useCase
+    blockUnBlockWorker_useCase,
+    designUpload_useCase
 }
 
 
@@ -40,7 +42,8 @@ const repository = {
     userRepository,
     workerRepository,
     adminRepository,
-    designCategoryRepository
+    designCategoryRepository,
+    designRepository
 
     
 }  

@@ -11,7 +11,7 @@ export class DesignCategoryProfile{
     designCategoryCount:Number;
 
 
-    constructor({categoryName,imageUrl,designCategoryCount} : DesignCategoryData){
+ constructor({categoryName,imageUrl,designCategoryCount} : DesignCategoryData){
         this.categoryName=categoryName
         this.imageUrl=imageUrl
         this.designCategoryCount=designCategoryCount

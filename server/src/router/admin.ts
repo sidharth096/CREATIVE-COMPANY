@@ -15,10 +15,12 @@ import { handleUploadErrors } from "../middleware/multer"
             adminGetAllUsersController,
             adminGetAllWorkersController,
             blockUnBlockUsersController,
-            blockUnBlockWorkerController} = adminController(dependency)
+            blockUnBlockWorkerController,
+            addDesignController} = adminController(dependency)
 
     router.post("/adminLogin", adminLoginController)
     router.post("/addDesignCategory",upload.single("image"),handleUploadErrors,adminDesignCategoryController)
+    router.post ('/addDesign',upload.single("image"),handleUploadErrors,addDesignController)
 
     router.get("/getAllUsers",authAdminMiddleware,adminGetAllUsersController)
     router.get("/getAllWorkers",authAdminMiddleware,adminGetAllWorkersController)

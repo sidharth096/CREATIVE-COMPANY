@@ -5,6 +5,7 @@ import adminGetAllUsersController from "./adminGetAllUsers.controller";
 import adminGetAllWorkersController from "./adminGetAllWorkers.controller";
 import blockUnBlockUsersController from "./blockUnBlockUsers.controller";
 import blockUnBlockWorkerController from "./blockUnBlockWorker.controller";
+import addDesignController from "./addDesign.controller";
 import { DependenciesData } from "../../entity/interface";
 
 export = (dependencies:any)=>{
@@ -14,7 +15,9 @@ export = (dependencies:any)=>{
      adminGetAllUsersController:adminGetAllUsersController(dependencies),
      adminGetAllWorkersController:adminGetAllWorkersController(dependencies),
      blockUnBlockUsersController:blockUnBlockUsersController(dependencies),
-     blockUnBlockWorkerController:blockUnBlockWorkerController(dependencies)
+     blockUnBlockWorkerController:blockUnBlockWorkerController(dependencies),
+     addDesignController:addDesignController(dependencies)
+
 
    }
 }

@@ -7,7 +7,8 @@ import { getAdminByEmail_useCase,
     getAllUsers_useCase,
     getAllWorkers_useCase,
     blockUnBlockUser_useCase,
-    blockUnBlockWorker_useCase } from "./admin";
+    blockUnBlockWorker_useCase,
+    designUpload_useCase } from "./admin";
     
 import { getAllDesignCategory_useCase } from "./design";
 
@@ -25,7 +26,8 @@ export {
     getAllUsers_useCase,
     getAllWorkers_useCase,
     blockUnBlockUser_useCase,
-    blockUnBlockWorker_useCase
+    blockUnBlockWorker_useCase,
+    designUpload_useCase
 
     
 }

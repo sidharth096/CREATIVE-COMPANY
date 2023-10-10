@@ -4,6 +4,7 @@ import { getAllUsers_useCase } from "./getAllUsers.useCase";
 import { getAllWorkers_useCase } from "./getAllWorkers.useCase";
 import { blockUnBlockUser_useCase } from "./blockUnBlockUser.useCase";
 import { blockUnBlockWorker_useCase } from "./blockUnBlockWorker.useCase";
+import { designUpload_useCase } from "./addDesignUpload.useCase";
 
 export{
     getAdminByEmail_useCase,
@@ -11,5 +12,6 @@ export{
     getAllUsers_useCase,
     getAllWorkers_useCase,
     blockUnBlockUser_useCase,
-    blockUnBlockWorker_useCase
+    blockUnBlockWorker_useCase,
+    designUpload_useCase
 }
