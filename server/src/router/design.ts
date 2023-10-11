@@ -6,9 +6,11 @@ export = (dependency:DependenciesData)=>{
 
     const router = express.Router()
 
-    const {getAllDesignCategoryController}= designController(dependency)
+    const {getAllDesignCategoryController,getAllDesignController,getDesignByIdController}= designController(dependency)
 
     router.get('/getAllDesignCategory',getAllDesignCategoryController)
+    router.get('/getAllDesign',getAllDesignController)
+    router.patch('/getDesignByCategory',getDesignByIdController)
 
     return router
 

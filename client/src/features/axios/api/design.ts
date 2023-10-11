@@ -1,6 +1,5 @@
 import axios from "axios";
 import { DesignCategoryInterface } from "../../../types/userInterface";
-import { log } from "console";
 
 export const getDesignCategories= async()=>{
 
@@ -44,3 +43,30 @@ export const addDesignCategory = async (designCategoryData:DesignCategoryInterfa
       throw new Error(error.message);
     }
   };
+
+  export const getDesign = async()=>{
+    try {
+      const response = await axios({
+        method: 'get',
+        url: 'http://localhost:5000/api/design/getAllDesign'
+      })
+      return response.data
+    } catch (error:any) {
+      throw new Error(error.data.message)
+    }
+  }
+
+  export const getDesignByCategory = async(categoryId:string):Promise<any>=>{
+    try {
+      console.log("222",categoryId);
+      
+      const response = await axios({
+        method: 'patch',
+        url: 'http://localhost:5000/api/design/getDesignByCategory',
+        data: {categoryId}
+      })
+      return response.data
+    } catch (error:any) {
+      throw new Error(error.data.message)
+    }
+  }

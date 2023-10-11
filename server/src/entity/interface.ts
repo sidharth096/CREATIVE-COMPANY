@@ -30,5 +30,7 @@ export interface useCaseData {
     blockUnBlockUser_useCase:any
     blockUnBlockWorker_useCase:any
     designUpload_useCase:any
+    getAllDesign_useCase:any
+    getDesignByCategoryId_useCase:any
     
 }

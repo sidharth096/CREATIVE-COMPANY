@@ -12,6 +12,11 @@ export ={
 
          const AllDesign = await Design.find()
          return AllDesign
+    },
+    getDesignByCategoryId: async (Id:string)=>{
+        
+        const designs = await Design.find({categoryId:Id})
+        return designs
     }
 }
 

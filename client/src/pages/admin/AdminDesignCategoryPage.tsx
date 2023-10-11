@@ -1,18 +1,22 @@
 import React from 'react'
 import AdminHeader from '../../components/admin/AdminHeader'
-import DesignCategory from '../../components/Design/DesignCategory'
+
 import DesignCategoryForm from '../../components/Design/DesignCategoryForm'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { modalOpenReducer } from '../../redux/slice/adminSlice/modalSlice'
+import AdminDesignCategory from '../../components/Design/AdminDesignCategory'
+import { RootState } from '../../redux/reducer/reducer'
 
 
-const AdminDesignPage = () => {
+const AdminDesignCategoryPage = () => {
 
   const dispatch=useDispatch()
-
+ 
 
   const openModal = () => {
+
     dispatch(modalOpenReducer())
+
   };
 
 
@@ -23,16 +27,12 @@ const AdminDesignPage = () => {
       <h1 className='text-black text-2xl font-semibold'>Design Categories ..</h1>
       <button onClick={openModal} className='bg-black text-white xs:p-2 xxs:mt-2 xs:mt-0 rounded-lg xxs:text-sm xs:text-base xxs:p-1'>Add Designcategory</button>
      </div>
-     <DesignCategory/>
 
-
-        <DesignCategoryForm/>
+     <AdminDesignCategory/>
+     <DesignCategoryForm/>
        
-    
-
-
    </>
   )
 }
 
-export default AdminDesignPage
+export default AdminDesignCategoryPage
