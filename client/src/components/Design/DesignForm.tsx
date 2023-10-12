@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer,toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
-import { DesignCategoryInterface } from "../../types/designInterface";
+import { DesignInterface } from "../../types/designInterface";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducer/reducer";
 import Modal from "react-modal";
 import { modalCloseReducer } from "../../redux/slice/adminSlice/modalSlice";
-import { addDesignCategory } from "../../features/axios/api/design";
+import { addDesign } from "../../features/axios/api/design";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { setDesignCategories } from "../../redux/slice/designSlice/designCategoriesDataslice";
+import { setDesigns } from "../../redux/slice/designSlice/designsDataslice";
+import { getDesignCategories } from "../../features/axios/api/design";
+import Select from "react-select";
 
 const customStyles = {
   content: {
@@ -26,13 +29,22 @@ const customStyles = {
   },
 };
 
-const initialValuesLogin: DesignCategoryInterface = {
-  categoryname: "",
+const customStyle = {
+  control: (styles: any) => ({
+    ...styles,
+    backgroundColor: "white",
+    borderRadius: "0.375rem",
+    borderColor: "black",
+  }),
+};
+
+const initialValuesLogin: DesignInterface = {
+  categoryId: "",
   img: null,
 };
 
 const loginSchema = Yup.object().shape({
-  categoryname: Yup.string().required("Name is required"),
+//   categoryId: Yup.mixed().required("Select Category"),
   img: Yup.mixed()
     .required("File is required")
     .test("fileType", "Invalid file format", (value) => {
@@ -44,39 +56,69 @@ const loginSchema = Yup.object().shape({
     }),
 });
 
-
-
-
-const DesignCategoryForm = () => {
-
-
+const DesignForm = () => {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state: RootState) => state.modal.modal);
+  const designCategories = useSelector(
+    (state: RootState) => state.designcategories.designCatagories
+  );
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+  useEffect(() => {
+    getDesignCategories()
+      .then((response) => {
+        console.log(response);
 
-  const handleSubmit = (userData: DesignCategoryInterface) => {
+        dispatch(setDesignCategories(response.data));
+      })
+      .catch((error: any) => {
+        console.log(error);
 
-    addDesignCategory(userData).then((response) => {
-      dispatch(modalCloseReducer())
-      dispatch(setDesignCategories(response.data))
-      notify(response.data.message, "success");
-    }).catch((error:any)=>{
-       notify(error.Error,"error")
-    })
-    
+        console.log("Design category getting error", error);
+      });
+  }, []);
+
+
+  const handleSubmit = (userData: DesignInterface) => {  
+    if (selectedCategory) {
+      userData.categoryId = selectedCategory.value;
+    }
+    addDesign(userData)
+      .then((response) => {
+        dispatch(modalCloseReducer());
+        // dispatch(setDesigns(response.data))
+        notify(response.data.message, "success");
+      })
+      .catch((error: any) => {
+        notify(error.Error, "error");
+      });
   };
 
-  
+
+
   const notify = (msg: string, type: string) =>
-  type === "error"
-    ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
-    : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+    type === "error"
+      ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
+      : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+
 
   const closeModal = () => {
     dispatch(modalCloseReducer());
   };
-  
+
+
+  const [selectedCategory, setSelectedCategory] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+
+
+  const handleCategoryChange = (
+    selectedOption: { value: string; label: string } | null
+  ) => {
+    setSelectedCategory(selectedOption);
+  };
+
 
   return (
     <>
@@ -99,15 +141,23 @@ const DesignCategoryForm = () => {
             {({ errors, touched, setFieldValue }) => (
               <Form>
                 <div className="mb-4">
-                  <Field
-                    type="text"
-                    id="categoryname"
-                    name="categoryname"
-                    placeholder="Category Name"
-                    className="mt-1 p-2.5 w-full rounded-md border border-black"
+                  <Select
+                    id="categoryId"
+                    name="categoryId"
+                    value={selectedCategory}
+                    onChange={handleCategoryChange}
+                    options={
+                      (designCategories &&
+                        designCategories.map((designCategory) => ({
+                          value: designCategory._id,
+                          label: designCategory.categoryName,
+                        }))) ||
+                      []
+                    }
+                    styles={customStyle}
                   />
-                  {errors.categoryname && touched.categoryname ? (
-                    <div className="text-red-600">{errors.categoryname}</div>
+                  {errors.categoryId && touched.categoryId ? (
+                    <div className="text-red-600">{errors.categoryId}</div>
                   ) : null}
                 </div>
 
@@ -144,10 +194,12 @@ const DesignCategoryForm = () => {
                     Upload Image
                   </label>
                 </div>
-                
+
                 {errors.img && touched.img ? (
-                    <div className="text-red-600 flex justify-center">{errors.img}</div>
-                  ) : null}
+                  <div className="text-red-600 flex justify-center">
+                    {errors.img}
+                  </div>
+                ) : null}
 
                 <div className="flex mt-7">
                   <button
@@ -159,7 +211,7 @@ const DesignCategoryForm = () => {
                 </div>
               </Form>
             )}
-          </Formik>  
+          </Formik>
         </div>
       </Modal>
       <ToastContainer />
@@ -167,4 +219,4 @@ const DesignCategoryForm = () => {
   );
 };
 
-export default DesignCategoryForm;
+export default DesignForm;
