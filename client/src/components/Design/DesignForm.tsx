@@ -84,9 +84,10 @@ const DesignForm = () => {
       userData.categoryId = selectedCategory.value;
     }
     addDesign(userData)
-      .then((response) => {
+      .then((response) => { 
+        console.log("hai",response);
+        
         dispatch(modalCloseReducer());
-        // dispatch(setDesigns(response.data))
         notify(response.data.message, "success");
       })
       .catch((error: any) => {

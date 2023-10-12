@@ -9,7 +9,7 @@ const navigation = [
   { name: 'Home', Link: '/', current: true },
   { name: 'Designs', Link: '/user/design', current: false },
   { name: 'Workers', Link: '/user/worker', current: false },
-  { name: 'About', Link: '/about', current: false },
+  { name: 'About', Link: '/user/about', current: false },
 ]
 
 function classNames(...classes: string[]) {

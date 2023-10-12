@@ -7,15 +7,9 @@ export =(dependcies:DependenciesData):any=>{
 
     const getDesignByCategoryId = async(req:Request,res:Response)=>{
         
-  console.log("manu");
-  
-        console.log(req.body);
         const categoryId =req.body.categoryId
 
         const response = await getDesignByCategoryId_useCase(dependcies).execute(categoryId)
-
-        console.log(response);
-        
 
         if(!response){
 
