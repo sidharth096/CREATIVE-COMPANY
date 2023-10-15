@@ -2,6 +2,9 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {useNavigate} from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { clearWorkerToken } from '../../redux/slice/workerSlice/workerTokenSlice'
+import { workerLogoutReducer } from '../../redux/slice/workerSlice/workerAuthSlice'
 
 const navigation = [
  
@@ -18,6 +21,17 @@ function classNames(...classes: string[]) {
 const WorkerHeader = () => {
 
     const navigate = useNavigate()
+    const dispatch =useDispatch()
+
+    const userStr = localStorage.getItem("worker");
+    const worker = userStr ? JSON.parse(userStr) : null;
+  
+    const handleLogout = () => {
+      dispatch(clearWorkerToken())
+      // dispatch(clearWorker())
+      dispatch(workerLogoutReducer())
+      navigate('/worker')
+    };
   
     const handleSignInClick = () => {
       navigate('/worker/workerLogin');
@@ -78,7 +92,26 @@ const WorkerHeader = () => {
                   {/* sign in */}
     
                   <div className='flex gap-3 text-white '>
-                     <button className=' rounded-full bg-black text-xs text-white px-3 py-1 text-s ' onClick={handleSignInClick}>Sign in</button>
+                     {worker ? 
+                  <div className="flex gap-3">
+                    <div >
+                      <h3 className="text-black font-medium">{worker.name}</h3>
+                    </div>
+                   
+                    <div className="flex gap-3 text-white ">
+                      <button className=" rounded-full bg-black text-xs text-white px-3 py-1 text-s "  onClick={handleLogout}  >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                 : 
+                  <button
+                    className=" rounded-full bg-black text-xs text-white px-3 py-1 text-s "
+                    onClick={handleSignInClick}
+                  >
+                    Sign in
+                  </button>
+                }
                      
                   </div>
     

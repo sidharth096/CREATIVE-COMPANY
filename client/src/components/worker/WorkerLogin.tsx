@@ -20,7 +20,7 @@ import {
 import { RootState } from '../../redux/reducer/reducer';
 import { workerLoginReducer } from '../../redux/slice/workerSlice/workerAuthSlice';
 import { setWorkerToken } from '../../redux/slice/workerSlice/workerTokenSlice';
-import { workerLogoutReducer } from '../../redux/slice/workerSlice/workerAuthSlice';
+import { setWorker } from '../../redux/slice/workerSlice/workerDataSlice';
 
 
 
@@ -72,9 +72,11 @@ const WorkerLogin = () => {
       workerLogin(userData).then((response)=>{
 
       const token = response.token
+      const worker = response.data
       
       dispatch(workerLoginReducer())
       dispatch(setWorkerToken(token))
+      dispatch(setWorker(worker))
 
       notify(response.data.message, "success");
 

@@ -58,6 +58,7 @@ const handleSubmit = (userData:signupInterface)=>{
   userRegister(userData).then((response)=>{
 
     notify(response.data.message, "success");
+    
     navigate('/')
 
   }).catch((error)=>{

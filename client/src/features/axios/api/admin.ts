@@ -52,6 +52,26 @@ export const usersData = async (token:string|null)=>{
     }
  };
 
+  export const WorkersDataForUsers = async (token:string|null):Promise<any>=>{
+    try {
+
+     const response = await axios({
+       method: 'get',
+       url: 'http://localhost:5000/api/user/getAllWorkers',
+       headers: {
+        Authorization: `Bearer ${token}`, // Include the JWT token in the Authorization header
+      },
+     })
+
+     return response.data
+     
+    } catch (error:any) {
+      throw new Error(error.response.data.message);
+    }
+ };
+
+
+
  export const blockUnBlock = async(userId:string)=>{
     try {
         

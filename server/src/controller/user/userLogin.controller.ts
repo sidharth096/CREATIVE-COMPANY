@@ -39,11 +39,20 @@ export = (dependencies :DependenciesData):any =>{
              
             const userId =  isExistingUser._id
             const token = await authServies.generateToken({id:userId,role:"user"})
+
+            const { name,email,_id,phone } = isExistingUser;
+
+            const responseData = {
+             _id,
+             name,
+             email,
+             phone
+           }
             
                 res.status(200).json({
                 success:true,
                 message:"Login successfull",
-                data:isExistingUser,
+                data:responseData,
                 token:token
             })
 

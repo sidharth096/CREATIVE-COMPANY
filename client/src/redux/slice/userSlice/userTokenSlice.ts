@@ -27,6 +27,7 @@ const userTokenSlice = createSlice({
         setToken:(state,action:PayloadAction<string>)=>{
             state.token=action.payload;
             try {
+                console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                 localStorage.setItem("token",action.payload)
             } catch (error) {
                 console.log("Error storing token in localstorage",error);
@@ -38,7 +39,7 @@ const userTokenSlice = createSlice({
             try {
                 localStorage.removeItem("token")
             } catch (error) {
-                console.log("Error removin token from localstorage",error);
+                console.log("Error removing token from localstorage",error);
                 
             }
         }

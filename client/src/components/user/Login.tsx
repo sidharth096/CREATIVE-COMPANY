@@ -21,6 +21,7 @@ import {
 import { stat } from 'fs';
 import { login } from '../../redux/slice/userSlice/userAuthSlice';
 import { setToken } from '../../redux/slice/userSlice/userTokenSlice';
+import { setUser } from '../../redux/slice/userSlice/userDataSlice';
 
 
 
@@ -63,7 +64,7 @@ const Login = () => {
      if(isLoggedIn === true){
       navigate("/")
     }
-  })
+  },[])
 
   
 const notify = (msg: string, type: string) =>
@@ -72,14 +73,21 @@ type === "error"
   : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
 
   const handleSubmit = (userData:loginInterface)=>{
-    console.log(userData);
-    
+
     userLogin(userData).then((response)=>{
+      
      
       const token = response.token
+      const user = response.data
+
+      console.log("user",user);
+      
+
       dispatch(login())
       dispatch(setToken(token))
+      dispatch(setUser(user))
       
+
     notify(response.data.message, "success");
     navigate("/")
 

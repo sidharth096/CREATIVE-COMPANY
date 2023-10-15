@@ -11,13 +11,17 @@ import modalSlice from "../slice/adminSlice/modalSlice";
 import designCategoriesDataslice from "../slice/designSlice/designCategoriesDataslice";
 import designsDataslice from "../slice/designSlice/designsDataslice";
 import designCategoryNameslice from "../slice/designSlice/designCategoryNameslice";
+import userDataSlice from "../slice/userSlice/userDataSlice";
+import workerDataSlice from "../slice/workerSlice/workerDataSlice";
 
 
 const reducers =combineReducers({
     userAuth:userAuthSlice,
     uerToken:userTokenSlice,
+    userData:userDataSlice,
     workerAuth:workerAuthSlice,
     workerToken:workerTokenSlice,
+    workerData:workerDataSlice,
     adminAuth:adminAuthSlice,
     adminToken:adminTokenSlice,
     usersData:usersDataSlice,
@@ -26,6 +30,7 @@ const reducers =combineReducers({
     designcategories:designCategoriesDataslice,
     desings:designsDataslice,
     designCategoryName:designCategoryNameslice
+
 })
 export type RootState = ReturnType<typeof reducers>;
 export default reducers

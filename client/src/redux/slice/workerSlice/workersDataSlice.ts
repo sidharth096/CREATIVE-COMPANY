@@ -2,9 +2,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 
 interface Worker {
-
+    phone: string;
+    job_title: string;
     id: number;
-  name: string;
+    name: string;
 
 }
 

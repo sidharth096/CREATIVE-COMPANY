@@ -1,29 +1,41 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {useNavigate} from "react-router-dom"
-import { Link } from 'react-router-dom'
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { clearToken } from "../../redux/slice/userSlice/userTokenSlice";
+import { clearUser } from "../../redux/slice/userSlice/userDataSlice";
+import { logout } from "../../redux/slice/userSlice/userAuthSlice";
 
 const navigation = [
- 
-  { name: 'Home', Link: '/', current: true },
-  { name: 'Designs', Link: '/user/design', current: false },
-  { name: 'Workers', Link: '/user/worker', current: false },
-  { name: 'About', Link: '/user/about', current: false },
-]
+  { name: "Home", Link: "/", current: true },
+  { name: "Designs", Link: "/user/design", current: false },
+  { name: "Workers", Link: "/user/worker", current: false },
+  { name: "About", Link: "/user/about", current: false },
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-
-
 export default function Header() {
+  const navigate = useNavigate();
+  const dispatch =useDispatch()
 
-  const navigate = useNavigate()
-  
+  const userStr = localStorage.getItem("user");
+  const user = userStr ? JSON.parse(userStr) : null;
+
+  const handleLogout = () => {
+    dispatch(clearToken())
+    dispatch(clearUser())
+    dispatch(logout())
+    navigate('/')
+  };
+
   const handleSignInClick = () => {
-    navigate('/user/userLogin');
+    navigate("/user/userLogin");
   };
 
   return (
@@ -48,32 +60,32 @@ export default function Header() {
               {/* logo */}
 
               <div className="hidden sm:flex flex-shrink-0 items-center ">
-                  <img
-                    className="h-8 w-auto cursor-pointer"
-                    src="https://res.cloudinary.com/di7nyjjfl/image/upload/f_auto,q_auto/v1/creative%20company/logo/bysy0sj7ttessvcuvut6"
-                    alt="Creative Company"
-                  />
+                <img
+                  className="h-8 w-auto cursor-pointer"
+                  src="https://res.cloudinary.com/di7nyjjfl/image/upload/f_auto,q_auto/v1/creative%20company/logo/bysy0sj7ttessvcuvut6"
+                  alt="Creative Company"
+                />
               </div>
 
               {/* Menu items */}
 
               <div className="flex flex-1 items-center justify-center sm:items-stretch ">
-                
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-
                     {navigation.map((item) => (
-                      <Link to ={item.Link}>
-                      <a
-                        key={item.name}
-                        className={classNames(
-                          item.current ? ' text-black underline underline-offset-1' : 'text-black hover: hover:text-gray-400',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
+                      <Link to={item.Link}>
+                        <a
+                          key={item.name}
+                          className={classNames(
+                            item.current
+                              ? " text-black underline underline-offset-1"
+                              : "text-black hover: hover:text-gray-400",
+                            "rounded-md px-3 py-2 text-sm font-medium"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </a>
                       </Link>
                     ))}
                   </div>
@@ -82,13 +94,30 @@ export default function Header() {
 
               {/* sign in */}
 
-              <div className='flex gap-3 text-white '>
-                 <button className=' rounded-full bg-black text-xs text-white px-3 py-1 text-s ' onClick={handleSignInClick}>Sign in</button>
-                 
+              <div className="flex gap-3 text-white ">
+                {user ? (
+                  <div className="flex gap-3">
+                    <div >
+                      <h3 className="text-black font-medium">{user.name}</h3>
+                    </div>
+                   
+                    <div className="flex gap-3 text-white ">
+                      <button className=" rounded-full bg-black text-xs text-white px-3 py-1 text-s "  onClick={handleLogout}  >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    className=" rounded-full bg-black text-xs text-white px-3 py-1 text-s "
+                    onClick={handleSignInClick}
+                  >
+                    Sign in
+                  </button>
+                )}
               </div>
 
-
-               {/* Profile */}
+              {/* Profile */}
 
               {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
@@ -155,19 +184,20 @@ export default function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2 ">
               {navigation.map((item) => (
-                <Link to ={item.Link}>
-                <Disclosure.Button
-                  key={item.name} 
-                  as="a"
-                  className={classNames(
-                    item.current ? ' text-white  bg-black ' : 'text-black  hover:text-gray-400',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                   >
-                  {item.name}
-                  
-                </Disclosure.Button>
+                <Link to={item.Link}>
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    className={classNames(
+                      item.current
+                        ? " text-white  bg-black "
+                        : "text-black  hover:text-gray-400",
+                      "block rounded-md px-3 py-2 text-base font-medium"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
                 </Link>
               ))}
             </div>
@@ -175,5 +205,5 @@ export default function Header() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }

@@ -11,7 +11,7 @@ export = (dependencies :DependenciesData):any =>{
 
             const workerData =req.body
 
-            // console.log(userData);
+            console.log(workerData);
             
 
             const isExistingWorker = await getWorkerByEmail_useCase(dependencies).execute(workerData.email)
@@ -22,7 +22,9 @@ export = (dependencies :DependenciesData):any =>{
                     message:"Worker not found"
                  })
             }
-
+            console.log("1111",isExistingWorker);
+            
+          
 
             const isPasswordCheck = await authServies.comparePassword(workerData.password,isExistingWorker.password)
             
@@ -34,13 +36,23 @@ export = (dependencies :DependenciesData):any =>{
             }
 
              
-            const userId =  isExistingWorker._id
-            const token = await authServies.generateToken({id:userId,role:"user"})
-            
+            const workerId =  isExistingWorker._id
+            const token = await authServies.generateToken({id:workerId,role:"user"})
+
+            const { name,email,_id,phone } = isExistingWorker;
+
+            const responseData = {
+             _id,
+             name,
+             email,
+             phone
+           }
+             console.log("aaaa",responseData);
+             
             res.status(200).json({
                 success:true,
                 message:"Login successfull",
-                data:isExistingWorker,
+                data:responseData,
                 token:token
             })
 

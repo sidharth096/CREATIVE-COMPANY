@@ -25,7 +25,7 @@ const UserHome = () => {
               <p>"Bringing Your Dreams to Life: Crafting Exceptional Home <br/>Designs Tailored for You."</p>
             </div>
 
-        </div>
+        </div> 
 
         <div className='xxs:flex flex-col  lg:flex-row  align-middle mt-24 ' dir='rtl'>
 
@@ -45,7 +45,7 @@ const UserHome = () => {
 
     </section>
     </>
-  )
+  ) 
 } 
 
 export default UserHome
