@@ -12,6 +12,8 @@ import { getAdminByEmail_useCase,
     
 import { getAllDesignCategory_useCase,getAllDesign_useCase,getDesignByCategoryId_useCase } from "./design";
 
+import { generateOtp_useCase,verifyOtp_useCase } from "./otp";
+
 
 
 export {
@@ -29,7 +31,9 @@ export {
     blockUnBlockWorker_useCase,
     designUpload_useCase,
     getAllDesign_useCase,
-    getDesignByCategoryId_useCase
+    getDesignByCategoryId_useCase,
+    generateOtp_useCase,
+    verifyOtp_useCase
 
     
 }

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { loginInterface } from "../../../types/userInterface";
-import { log } from "console";
 
 export const adminLogin = async (adminData:loginInterface):Promise<any>=>{
     try {

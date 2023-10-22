@@ -32,5 +32,7 @@ export interface useCaseData {
     designUpload_useCase:any
     getAllDesign_useCase:any
     getDesignByCategoryId_useCase:any
+    generateOtp_useCase:any
+    verifyOtp_useCase:any
     
 }

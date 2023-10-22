@@ -39,5 +39,19 @@ export const userRegister =async (userData:signupInterface)=>{
   }
 };
 
+export const findUSer =async (email:string,phone:string)=>{
+  try {
+    const response = await axios({
+      method: 'post',
+      url: 'http://localhost:5000/api/user/isExistingUser',
+      data:{email,phone}
+    })
+    console.log( response.data.message);
+    return response;
+  } catch (error:any) {
+    throw new Error(error.response.data.message);
+  }
+};
+
 
   
