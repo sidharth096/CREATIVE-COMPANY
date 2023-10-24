@@ -54,7 +54,7 @@ function UserOtp(user:any) {
 
         notify(response.data.message, "success");
         
-        navigate('/')
+        navigate('/user/userLogin')
     
       }).catch((error)=>{
         notify(error.message, "error");

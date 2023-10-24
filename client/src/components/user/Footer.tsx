@@ -29,7 +29,7 @@ const Footer = () => {
               <ul className="flex flex-col ">
                   <li><a  className="text-sm hover:text-base cursor-pointer" onClick={()=>navigate("/")}>Home</a></li>
                   <li><a  className="text-sm hover:text-base cursor-pointer" onClick={()=>navigate("/user/worker")}>Workers</a></li>
-                  <li><a  className="text-sm hover:text-base cursor-pointer" onClick={()=>navigate("/about")}>About</a></li>
+                  <li><a  className="text-sm hover:text-base cursor-pointer" onClick={()=>navigate("/user/about")}>About</a></li>
                   <li><a  className="text-sm hover:text-base cursor-pointer" onClick={()=>navigate("/user/design")}>Design</a></li>
               </ul>
             </div>

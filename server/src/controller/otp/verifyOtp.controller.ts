@@ -26,9 +26,9 @@ export = (dependcies:DependenciesData)=>{
         }
         
         if(response.status==="pending"){
-            return  res.status(200).json({
+            return  res.status(400).json({
                 success:false,
-                message:'OTP verified ',
+                message:'Invali OTP ',
                 data:response
             })
         }

@@ -39,7 +39,7 @@ export const userRegister =async (userData:signupInterface)=>{
   }
 };
 
-export const findUSer =async (email:string,phone:string)=>{
+export const isExistingUser =async (email:string,phone:string)=>{
   try {
     const response = await axios({
       method: 'post',

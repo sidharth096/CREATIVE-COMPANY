@@ -15,6 +15,11 @@ export ={
         const isExist = await User.findOne({email:email})
         return isExist
     },
+    getUserByPhone: async(phone:string)=>{
+        
+        const isExist = await User.findOne({phone:phone})
+        return isExist
+    },
     getUserById: async(userId:string)=>{
         const user = await User.findById(userId)
     },

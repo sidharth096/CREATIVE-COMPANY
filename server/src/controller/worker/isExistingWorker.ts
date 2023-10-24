@@ -4,31 +4,31 @@ import { DependenciesData } from "../../entity/interface";
 
 export = (dependencies :DependenciesData):any =>{
 
-     const { useCase : {getUserByEmail_useCase,getUserByPhone_useCase}} = dependencies
+     const { useCase : {getWorkerByEmail_useCase,getWorkerByPhone_useCase}} = dependencies
 
-     const isExistingUserUSer =async (req:Request,res:Response)=>{
+     const isExistingWorker =async (req:Request,res:Response)=>{
         try {
 
             const userData =req.body
             
             userData.email = userData.email.toLowerCase();
         
-            const isExistingUser = await getUserByEmail_useCase(dependencies).execute(userData.email)
+            const isExistingWorker = await getWorkerByEmail_useCase(dependencies).execute(userData.email)
             
-            const isExistingUserByPhone = await getUserByPhone_useCase(dependencies).execute(userData.phone)
+            const isExistingWorkerByPhone = await getWorkerByPhone_useCase(dependencies).execute(userData.phone)
             
 
-            if(isExistingUser|| isExistingUserByPhone){
+            if(isExistingWorker|| isExistingWorkerByPhone){
                    return res.status(400).json({
                     success:false,
-                    message:"User already exist",
+                    message:"Worker already exist",
                 })
                
             }
 
             res.status(200).json({
                 success:true,
-                message:"User not found"
+                message:"Worker not found"
             })
             
 
@@ -39,6 +39,6 @@ export = (dependencies :DependenciesData):any =>{
         }        
         
      }
-     return  isExistingUserUSer
+     return  isExistingWorker
     
 } 

@@ -26,7 +26,7 @@ const DesignPage = () => {
       </div>
      
    
-      {/* <DesignCategory/> */}
+      <DesignCategory/>
 
       {categoryName ? (
       <div className=' flex justify-center cursor-pointer mt-10'>
@@ -34,7 +34,7 @@ const DesignPage = () => {
       </div>
     ) : null}
 
-      {/* <Design/>/ */}
+      <Design/>/
     </>
   )
 }

@@ -88,9 +88,9 @@ type === "error"
       dispatch(setToken(token))
       dispatch(setUser(user))
       
-
+  
     notify(response.data.message, "success");
-    navigate("/user/userLogin")
+    navigate("/")
 
   }).catch((error)=>{
     notify(error.message, "error");

@@ -17,7 +17,8 @@ import { createNewUserProfile_useCase,
     getAllDesign_useCase,
     getDesignByCategoryId_useCase,
     generateOtp_useCase,
-    verifyOtp_useCase
+    verifyOtp_useCase,
+    getUserByPhone_useCase
 
 
 } from "../useCase";
@@ -41,7 +42,8 @@ const useCase = {
     getAllDesign_useCase,
     getDesignByCategoryId_useCase,
     generateOtp_useCase,
-    verifyOtp_useCase
+    verifyOtp_useCase,
+    getUserByPhone_useCase
 }
 
 

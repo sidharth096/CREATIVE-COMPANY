@@ -31,33 +31,31 @@ const Workers = () => {
 
     
   return (
-   <>
-<div className='mt-10'>
-    {workers?.map((worker)=>(
-<div className='flex justify-center mt-10'>
-  <div className='flex justify-between w-3/6 h-48 mx-2 bg-gray-300'>
-    <div className='text-white p-4 text-center w-2/3'>
-      <div>
-        <img src="https://res.cloudinary.com/di7nyjjfl/image/upload/v1695651651/creative%20company/banners/znskrlxqhvwbni58tr0g.jpg" alt="" />
+<>
+  <div className='mt-10'>
+    {workers?.map((worker) => (
+      <div className='flex justify-center mt-10'>
+        <div className='flex flex-col md:flex-row w-full md:w-2/3 mx-2 bg-gray-100 rounded-lg shadow-md'>
+          <div className='md:w-2/5 relative'>
+            <img className='object-cover w-full h-48 md:h-64 rounded-lg' src="https://res.cloudinary.com/di7nyjjfl/image/upload/v1695651651/creative%20company/banners/znskrlxqhvwbni58tr0g.jpg" alt={worker.name} />
+          </div>
+          <div className='flex flex-col md:flex-row justify-between p-4 w-full'>
+            <div className='text-center md:text-left'>
+              <h1 className='text-2xl font-bold mb-2'>{worker.name}</h1>
+              <p className='text-gray-600'><span className='font-bold'>Job title:</span> {worker.job_title}</p>
+              <p className='text-gray-600'><span className='font-bold'>Mob:</span> {worker.phone}</p>
+              <p className='text-gray-600'><span className='font-bold'>Location:</span> </p>
+            </div>
+            <div className='flex justify-center md:justify-end '>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className='flex justify-between text-black p-4 text-center w-full'>
-      <div className='text-start'>
-       <h1 className='text-xl font-bold  '>{worker.name}</h1>
-       <h1 className='mt-4 '><span className='font-bold'>Job title:</span>{worker.job_title}</h1>
-       <h1><span className='font-bold'>Mob:</span> {worker.phone}</h1>
-       <h1><span className='font-bold'>Location:</span> </h1>
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faEnvelope} />
-      </div> 
-    </div>
+    ))}
   </div>
-</div>
- ))}
-</div>
+</>
 
-   </>
   )
 }
 

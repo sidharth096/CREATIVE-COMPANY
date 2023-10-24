@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../components/user/Header'
 import Workers from '../../components/worker/Workers'
+import Search from '../../components/common/Search'
 
 const WorkerPage = () => {
   return (
@@ -11,6 +12,7 @@ const WorkerPage = () => {
           <h1 className='text-zinc-600  text-2xl font-semibold hover:text-black'> Find your workers</h1>
         </div> 
       </div>
+       <Search/>
        <Workers/>
     </div>
   )

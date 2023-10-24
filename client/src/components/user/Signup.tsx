@@ -18,7 +18,7 @@ import {
 } from 'formik';
 import UserOtp from './UserOtp';
 import { generateOtp } from '../../features/axios/api/otp';
-import { findUSer } from '../../features/axios/api/user';
+import { isExistingUser } from '../../features/axios/api/user';
 import { error } from 'console';
 
 
@@ -63,7 +63,7 @@ const Signup = () => {
 
 const handleSubmit = (userData:signupInterface)=>{
  
-  findUSer(userData.email,userData.phone).then((response)=>{
+  isExistingUser(userData.email,userData.phone).then((response)=>{
     generateOtp(userData.phone).then((response)=>{
       console.log("yes",response)   
     

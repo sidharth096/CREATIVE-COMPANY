@@ -34,3 +34,17 @@ export const workerLogin = async (workerData:loginInterface):Promise<any>=>{
     throw new Error(error.response.data.message)
   }
 }
+
+export const isExistingWorker =async (email:string,phone:string)=>{
+  try {
+    const response = await axios({
+      method: 'post',
+      url: 'http://localhost:5000/api/worker/isExistingWorker',
+      data:{email,phone}
+    })
+    console.log( response.data.message);
+    return response;
+  } catch (error:any) {
+    throw new Error(error.response.data.message);
+  }
+};

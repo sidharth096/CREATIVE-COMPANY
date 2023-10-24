@@ -1,5 +1,5 @@
-import { createNewUserProfile_useCase } from "./user";
-import { getUserByEmail_useCase } from "./user";
+import { createNewUserProfile_useCase,getUserByEmail_useCase,getUserByPhone_useCase } from "./user";
+
 import { createNewWorkerProfile_useCase,getWorkerByEmail_useCase,getWorkerByPhone_useCase } from "./worker";
 
 import { getAdminByEmail_useCase,
@@ -22,6 +22,7 @@ export {
     createNewWorkerProfile_useCase,
     getWorkerByEmail_useCase,
     getAdminByEmail_useCase,
+    getUserByPhone_useCase,
     designCategoryImageUpload_useCase,
     getAllDesignCategory_useCase,
     getWorkerByPhone_useCase,

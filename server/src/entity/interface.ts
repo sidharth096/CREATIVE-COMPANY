@@ -34,5 +34,6 @@ export interface useCaseData {
     getDesignByCategoryId_useCase:any
     generateOtp_useCase:any
     verifyOtp_useCase:any
+    getUserByPhone_useCase:any
     
 }

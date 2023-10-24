@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -53,6 +53,8 @@ const initialValuesSignup = {
 const WorkerSignup = () => {
 
    const navigate = useNavigate()
+   const [otpPage,setotpPage] = useState(false)
+   const [user,setUserData] =useState({})
 
   const notify = (msg: string, type: string) =>
     type === "error"
@@ -62,6 +64,8 @@ const WorkerSignup = () => {
 const handleSubmit = (workerData:workerSignupInterface)=>{
 
   console.log("........>",workerData);
+
+  
   
   workerRegister(workerData).then((response)=>{
 
