@@ -16,7 +16,11 @@ import {
   Field,
   FieldProps,
 } from 'formik';
-import { workerData } from 'worker_threads';
+// import { workerData } from 'worker_threads';
+import { isExistingWorker } from '../../features/axios/api/worker';
+import { generateOtp } from '../../features/axios/api/otp';
+import WorkerOtp from './WorkerOtp';
+
 
 
 
@@ -54,7 +58,7 @@ const WorkerSignup = () => {
 
    const navigate = useNavigate()
    const [otpPage,setotpPage] = useState(false)
-   const [user,setUserData] =useState({})
+   const [worker,setWorkerData] =useState({})
 
   const notify = (msg: string, type: string) =>
     type === "error"
@@ -63,27 +67,40 @@ const WorkerSignup = () => {
 
 const handleSubmit = (workerData:workerSignupInterface)=>{
 
-  console.log("........>",workerData);
-
+  isExistingWorker(workerData.email,workerData.phone).then((response)=>{
+    generateOtp(workerData.phone).then((response)=>{   
+    
+    }).catch((error)=>{
+      console.error(error) 
+    })
+    
+    setWorkerData(workerData)
+    setotpPage(true)
   
-  
-  workerRegister(workerData).then((response)=>{
-
-    notify(response.data.message, "success");
-    navigate('/worker')
-
   }).catch((error)=>{
     notify(error.message, "error");
   })
+  
+  
+  // workerRegister(workerData).then((response)=>{
+
+  //   notify(response.data.message, "success");
+  //   navigate('/worker')
+
+  // }).catch((error)=>{
+  //   notify(error.message, "error");
+  // })
 }
   return (
     <>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    {!otpPage?(
         <Formik
       initialValues={initialValuesSignup}
       validationSchema={loginSchema}
       onSubmit={handleSubmit}   >
      {({ errors, touched }) => (
-     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <>
      <div className="bg-gradient-to-t from-gray-400 to-gray-200  p-8 rounded shadow-md w-full sm:w-96">
       <h2 className="text-2xl font-semibold text-black  mb-6">Worker Signup</h2>
      
@@ -187,9 +204,17 @@ const handleSubmit = (workerData:workerSignupInterface)=>{
       
     </div>
     <ToastContainer/>
-  </div>
+    </>
   )}
+  
   </Formik>
+    ):(
+      <>
+      <WorkerOtp worker={worker}/>
+      </>
+    )
+}
+</div>
     </>
   )
 }

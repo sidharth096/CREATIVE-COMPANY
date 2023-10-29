@@ -7,17 +7,18 @@ import { userRegister } from '../../features/axios/api/user';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { workerRegister } from '../../features/axios/api/worker';
 
 // interface UserOtpProps {
 //   phone: string;
 // }
 
 
-function UserOtp(user:any) {
+function WorkerOtp(worker:any) {
 
   const navigate = useNavigate()
 
-  const User=user.user
+  const Worker=worker.worker
 
   // useEffect(()=>{
   //   generateOtp(User.phone).then((response)=>{
@@ -48,13 +49,14 @@ function UserOtp(user:any) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    verifyOtp(User.phone,otp).then((response)=>{
+    
+    verifyOtp(Worker.phone,otp).then((response)=>{
       
-      userRegister(User).then((response)=>{
+        workerRegister(Worker).then((response)=>{
 
         notify(response.data.message, "success");
         
-        navigate('/user/userLogin')
+        navigate('/worker/workerLogin')
     
       }).catch((error)=>{
         notify(error.message, "error");
@@ -70,7 +72,7 @@ function UserOtp(user:any) {
     <>
       <div className="bg-gradient-to-t from-gray-400 to-gray-200  p-8 rounded shadow-md h-72 max-w-md w-full space-y-4">
         <h2 className="text-2xl font-bold text-center"> OTP Verification</h2>
-        <p className=' text-sm  text-center'>Thank you for registering with you.Please type the OTP as shared on your mobile {User.phone} </p>
+        <p className=' text-sm  text-center'>Thank you for registering with you.Please type the OTP as shared on your mobile {Worker.phone} </p>
         <form onSubmit={handleSubmit} className='text-center mt-10'>
           <div className="flex space-x-2">
             {otp.map((digit, index) => (
@@ -97,4 +99,4 @@ function UserOtp(user:any) {
   );
 }
 
-export default UserOtp;
+export default WorkerOtp;

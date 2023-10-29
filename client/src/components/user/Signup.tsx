@@ -64,11 +64,10 @@ const Signup = () => {
 const handleSubmit = (userData:signupInterface)=>{
  
   isExistingUser(userData.email,userData.phone).then((response)=>{
-    generateOtp(userData.phone).then((response)=>{
-      console.log("yes",response)   
+    generateOtp(userData.phone).then((response)=>{  
     
     }).catch((error)=>{
-      console.error(error)
+      console.error(error) 
     })
     
     setUserData(userData)

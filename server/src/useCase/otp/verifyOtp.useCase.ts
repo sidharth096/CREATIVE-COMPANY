@@ -16,7 +16,6 @@ export const verifyOtp_useCase = (dependcies: DependenciesData) => {
                 client.verify.v2.services(verifySid)
                     .verificationChecks.create({ to: `+91${phone}`, code: otp })
                     .then((verification_check: any) => {
-                        console.log("5555555555555555555");
                     
                         if (verification_check.status === 'approved') {
                             console.log('Verification was approved.');

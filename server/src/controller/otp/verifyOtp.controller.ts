@@ -15,7 +15,6 @@ export = (dependcies:DependenciesData)=>{
 
         const response = await verifyOtp_useCase(dependcies).execute(phone,otp)
 
-        console.log("aaa",response);
 
         if(response.status==="approved"){
             return res.status(200).json({
