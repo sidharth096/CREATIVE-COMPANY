@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import LoginModal from '../common/LoginModal'
 
 const UserHome = () => {
   const navigate = useNavigate()
@@ -44,6 +45,10 @@ const UserHome = () => {
         </div>
 
     </section>
+    <div>
+    <LoginModal/> 
+    </div>
+  
     </>
   ) 
 } 

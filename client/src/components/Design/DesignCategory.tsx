@@ -73,7 +73,7 @@ const DesignCategory = () => {
                     </div>
                     <div className="flex justify-center bg-gray-300 mt-1 overflow-hidden">
                       <h3 className="font-bold xs:text-sm">
-                        {item.categoryName}
+                        {item.categoryName} 
                       </h3>
                     </div>
                   </div>

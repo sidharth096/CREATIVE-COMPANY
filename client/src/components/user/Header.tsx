@@ -1,13 +1,13 @@
-import { Fragment } from "react";
+
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { clearToken } from "../../redux/slice/userSlice/userTokenSlice";
 import { clearUser } from "../../redux/slice/userSlice/userDataSlice";
 import { logout } from "../../redux/slice/userSlice/userAuthSlice";
+import { modalOpenReducer } from "../../redux/slice/adminSlice/modalSlice";
 
 const navigation = [
   { name: "Home", Link: "/", current: true },
@@ -21,8 +21,14 @@ function classNames(...classes: string[]) {
 }
 
 export default function Header() {
+
   const navigate = useNavigate();
   const dispatch =useDispatch()
+
+  const openModal =()=>{
+    dispatch(modalOpenReducer())
+  }
+
 
   const userStr = localStorage.getItem("user");
   const user = userStr ? JSON.parse(userStr) : null;
@@ -34,9 +40,7 @@ export default function Header() {
     navigate('/')
   };
 
-  const handleSignInClick = () => {
-    navigate("/user/userLogin");
-  };
+ 
 
   return (
     <Disclosure as="nav" className="bg-white flex justify- shadow-md px- ">
@@ -110,7 +114,7 @@ export default function Header() {
                 ) : (
                   <button
                     className=" rounded-full bg-black text-xs text-white px-3 py-1 text-s "
-                    onClick={handleSignInClick}
+                    onClick={openModal}
                   >
                     Sign in
                   </button>
