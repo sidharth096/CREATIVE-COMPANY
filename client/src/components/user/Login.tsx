@@ -23,6 +23,7 @@ import { login } from '../../redux/slice/userSlice/userAuthSlice';
 import { setToken } from '../../redux/slice/userSlice/userTokenSlice';
 import { setUser } from '../../redux/slice/userSlice/userDataSlice';
 import UserOtp from './UserOtp';
+import GoggleLoginUser from './GoogleLoginUser';
 
 
 
@@ -152,6 +153,7 @@ type === "error"
                     Login
                   </button>
                 </div>
+                <GoggleLoginUser/>
 
                 <div className='flex justify-center mt-3'>
                   <a href="#" className="text-sm text-black hover:text-gray-600">
