@@ -35,6 +35,23 @@ export const workerLogin = async (workerData:loginInterface):Promise<any>=>{
   }
 }
 
+export const googleLoginWorker  = async (workerData:any):Promise<any>=>{
+  console.log("workerData",workerData);
+  try {
+     const response = await axios ({
+       method : 'post',
+       url : 'http://localhost:5000/api/worker/googleLoginWorker',
+       data : workerData,
+    })
+    console.log( response.data.message);
+    return response.data
+    
+  } catch (error:any) {
+    throw new Error(error.response.data.message)
+  }
+}
+
+
 export const isExistingWorker =async (email:string,phone:string)=>{
   try {
     const response = await axios({

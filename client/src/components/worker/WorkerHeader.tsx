@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {useNavigate} from "react-router-dom"
 import { useDispatch } from 'react-redux'
 import { clearWorkerToken } from '../../redux/slice/workerSlice/workerTokenSlice'
+import { clearWorker } from '../../redux/slice/workerSlice/workerDataSlice'
 import { workerLogoutReducer } from '../../redux/slice/workerSlice/workerAuthSlice'
 
 const navigation = [
@@ -28,9 +29,9 @@ const WorkerHeader = () => {
   
     const handleLogout = () => {
       dispatch(clearWorkerToken())
-      // dispatch(clearWorker())
+      dispatch(clearWorker())
       dispatch(workerLogoutReducer())
-      navigate('/worker')
+      navigate('/')
     };
   
     const handleSignInClick = () => {

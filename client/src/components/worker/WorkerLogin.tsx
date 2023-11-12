@@ -21,6 +21,7 @@ import { RootState } from '../../redux/reducer/reducer';
 import { workerLoginReducer } from '../../redux/slice/workerSlice/workerAuthSlice';
 import { setWorkerToken } from '../../redux/slice/workerSlice/workerTokenSlice';
 import { setWorker } from '../../redux/slice/workerSlice/workerDataSlice';
+import GoogleLoginWorker from './GoogleLoginWorker';
 
 
 
@@ -143,6 +144,7 @@ const WorkerLogin = () => {
               Login
             </button>
           </div>
+          <GoogleLoginWorker/>
   
           <div className='flex justify-center mt-3'>
             <a href="#" className="text-sm text-black hover:text-gray-600">

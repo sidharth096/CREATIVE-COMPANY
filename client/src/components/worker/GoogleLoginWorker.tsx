@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { login } from '../../redux/slice/userSlice/userAuthSlice';
-import { setToken } from '../../redux/slice/userSlice/userTokenSlice';
-import { setUser } from '../../redux/slice/userSlice/userDataSlice';
-import { googleLoginUser } from '../../features/axios/api/user';
+import { workerLoginReducer } from '../../redux/slice/workerSlice/workerAuthSlice';
+import { setWorker } from '../../redux/slice/workerSlice/workerDataSlice';
+import { setWorkerToken } from '../../redux/slice/workerSlice/workerTokenSlice';
+import { googleLoginWorker } from '../../features/axios/api/worker';
 import { modalCloseReducer } from '../../redux/slice/adminSlice/modalSlice';
 
-const GoogleLoginUser = () => {
+const GoogleLoginWorker = () => {
 
   const ClientId:string = process.env.REACT_APP_GOOGLE_AUTH_CLIENTID||''
   
@@ -31,20 +31,21 @@ const GoogleLoginUser = () => {
         const decoded = jwtDecode(credentialResponse.credential)
         console.log(decoded)
         
-        googleLoginUser(decoded)
+        googleLoginWorker(decoded)
         
             .then((response) => {
                 console.log(response);
                 
-                const user = response.data;
+                const worker = response.data;
                 const token = response.token;
 
-                dispatch(setToken(token));
-                dispatch(setUser(user))
-                dispatch(login());
+                
+                dispatch(setWorkerToken(token))
+                dispatch(setWorker(worker))
+                dispatch(workerLoginReducer())
                 dispatch(modalCloseReducer())
 
-                navigate("/");
+                navigate("/worker")
 
               }).catch((error: { message: string; })=>{
                 notify(error.message, "error");
@@ -71,5 +72,5 @@ const GoogleLoginUser = () => {
   )
 }
 
-export default GoogleLoginUser
+export default GoogleLoginWorker
 
