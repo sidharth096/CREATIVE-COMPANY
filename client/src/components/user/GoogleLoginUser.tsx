@@ -33,7 +33,7 @@ const GoogleLoginUser = () => {
             .then((response) => {
                 console.log(response);
                 
-                const user = response.user;
+                const user = response.data;
                 const token = response.token;
 
                 dispatch(setToken(token));

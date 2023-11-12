@@ -11,11 +11,8 @@ export = (dependencies :DependenciesData):any =>{
 
             const userData =req.body
 
-            console.log(userData);
-            
-
             const isExistingUser = await getUserByEmail_useCase(dependencies).execute(userData.email)
-            console.log("aaa",isExistingUser);
+            console.log(isExistingUser);
             
 
             if(!isExistingUser){
@@ -27,7 +24,6 @@ export = (dependencies :DependenciesData):any =>{
 
 
             const isPasswordCheck = await authServies.comparePassword(userData.password,isExistingUser.password)
-            console.log("333",isPasswordCheck);
             
             if(!isPasswordCheck){
                 return res.status(400).json({

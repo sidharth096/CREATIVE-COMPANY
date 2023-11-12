@@ -6,11 +6,12 @@ import { DependenciesData } from "../entity/interface"
 export  = (dependcies: DependenciesData)=>{ 
    const router = express.Router()
 
-   const {userSignUpController,userLoginController,isExistingUser } = userController(dependcies)
+   const {userSignUpController,userLoginController,isExistingUser,googleLoginUserController } = userController(dependcies)
    const {adminGetAllWorkersController}=adminController(dependcies)
 
    router.post("/userRegister",userSignUpController )
    router.post("/userLogin",userLoginController)
+   router.post("/googleLoginUser",googleLoginUserController)
    router.post("/isExistingUser",isExistingUser)
    router.get("/getAllWorkers",adminGetAllWorkersController)
 
